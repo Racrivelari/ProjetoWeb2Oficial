@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0 , maximum-scale=1.0">
   <title>Home</title>
+  <link rel="icon" href="/images/logo-header.png" type="image/x-icon">
   <link rel="stylesheet" href="/stylesheets/home.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
@@ -19,12 +20,14 @@
   <header>
     <nav>
       <div class="nav-container">
-        <div class="img-logo"></div>
+       <a class="texto-mid-page" href="/"><div class="img-logo"></div></a>
+        
         <div class="div-links">
-            <a href="/">Home</a>
-            <a href="/about">Sobre</a>
-            <a href="/tec">Tecnologias</a>
-            <a href="/contact">Contato</a>
+            <a class="texto-mid-page" href="/home">Home</a>
+            <a class="texto-mid-page" href="/about">Sobre</a>
+            <a class="texto-mid-page" href="/tec">Tecnologias</a>
+            <a class="texto-mid-page" href="/contact">Contato</a>
+            <a style="background-color:red; width: 10%; height: 1%" class="texto-mid-page" href="/">Sair</a>
         </div>
       </div>
     </nav>
@@ -38,21 +41,9 @@
     <div class="color" style="background-color: #8B7355;"></div>
 </div>
   
-  <section class="container-formulario" style="text-align: center;">
-    <h2>Login</h2>
-    <form action="/login" method="POST">
-      <label for="username">Usuário:</label>
-      <input type="text" id="username" name="username" required>
-      <br>
-      <label for="password">Senha:</label>
-      <input type="password" id="password" name="password" required>
-      <br>
-      <input type="submit" value="Entrar" style="display: block; margin: 0 auto; background-color: #A0522D;;">
-    </form>
-  </section>
 
   <footer>
-    <a style="text-decoration: none; color: white;" href="https://www.linkedin.com/in/ramon-crivelari-batista-b73392234/" target="_blank">@Petweb</a>
+    <a class="texto-end-page" href="https://www.linkedin.com/in/ramon-crivelari-batista-b73392234/" target="_blank">@Petweb</a>
   </footer>
 
 </body>

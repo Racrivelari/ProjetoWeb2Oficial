@@ -6,17 +6,18 @@ require('dotenv').config();
 const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.LOGIN,
-        pass: process.env.SENHA
-    },
-    // tls:{
-    //     rejectUnauthorized: false
-    // }
+  service: 'gmail',
+  auth: {
+    user: process.env.LOGIN,
+    pass: process.env.SENHA
+  },
+  tls:{
+    rejectUnauthorized: false
+  }
 });
 
-router.post('/email', (req, res) => { 
+
+router.post('/email', (req, res) => {   
     
     const { email, nome, assunto, mensagem } = req.body;
     
@@ -24,21 +25,27 @@ router.post('/email', (req, res) => {
         from: email, 
         to: 'petweb2002@gmail.com', 
         subject: assunto,
-        text: 'Usuário: ' + nome + 'Enviou: ' + mensagem
+        text: `Nome: ${nome}\nEmail: ${email}\n\n${mensagem}`,
     };
 
     transporter.sendMail(options, (error, info) => {
-        if (error) {
-            console.log(error);
-        } else {
-            alert('E-mail enviado: ' + info.response);
-        }
+      if (error) {
+        console.log(error);
+        res.status(500).send('Erro ao enviar o e-mail.');
+      } else {
+        console.log('E-mail enviado: ' + info.response);
+        res.send('E-mail enviado com sucesso!');
+      }
     });
 });
 
 //
 
 router.get('/', (req, res) => {
+  res.render('index');
+});
+
+router.get('/home', (req, res) => {
   res.render('home');
 });
 
