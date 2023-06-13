@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 , maximum-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="/stylesheets/home.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+</style>
+
+<body>
+
+  <header>
+    <nav>
+      <div class="nav-container">
+        <div class="img-logo"></div>
+        <div class="div-links">
+            <a href="/">Home</a>
+            <a href="/about">Sobre</a>
+            <a href="/tec">Tecnologias</a>
+            <a href="/contact">Contato</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="color-palette">
+    <div class="color" style="background-color: #8B4513;"></div>
+    <div class="color" style="background-color: #A0522D;"></div>
+    <div class="color" style="background-color: #D2691E;"></div>
+    <div class="color" style="background-color: #CD853F;"></div>
+    <div class="color" style="background-color: #8B7355;"></div>
+</div>
+  
+  <section class="container-formulario" style="text-align: center;">
+    <h2>Login</h2>
+    <form action="/login" method="POST">
+      <label for="username">Usuário:</label>
+      <input type="text" id="username" name="username" required>
+      <br>
+      <label for="password">Senha:</label>
+      <input type="password" id="password" name="password" required>
+      <br>
+      <input type="submit" value="Entrar" style="display: block; margin: 0 auto; background-color: #A0522D;;">
+    </form>
+  </section>
+
+  <footer>
+    <a style="text-decoration: none; color: white;" href="https://www.linkedin.com/in/ramon-crivelari-batista-b73392234/" target="_blank">@Petweb</a>
+  </footer>
+
+</body>
+
+</html>

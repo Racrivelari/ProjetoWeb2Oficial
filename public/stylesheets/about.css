@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #F1DEC9
+    /* background-image: url("../images/paw.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat; */
+}
+
+/* body::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.4); 
+    z-index: -1;
+} */
+
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .img-logo {
+    background-image: url("../images/logo-header.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100px;
+    height: 80px;
+  }
+  
+header {
+    background-color: #8B4513;
+    color: #fff;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.nav-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+nav a {
+    
+    display: inline;
+    margin-right: 60px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+section {
+    text-align: center;
+    margin: 20px;
+
+}
+
+.color-palette {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.color {
+    width: 100px;
+    height: 100px;
+}
+
+.container-formulario {
+    display: inline-block;
+    padding: 60px;
+    border: 1px solid #ccc;
+    background-color: #f2f2f2;
+}
+
+.container-formulario h2 {
+    margin-top: 0;
+}
+
+.container-formulario label,
+.container-formulario input[type="text"],
+.container-formulario input[type="password"],
+.container-formulario input[type="submit"] {
+    display: block;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-formulario input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+footer {
+    
+    background-color: #8B4513;
+    color: #fff;
+    padding: 3px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
