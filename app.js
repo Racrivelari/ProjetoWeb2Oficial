@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 const mustacheExpress = require('mustache-express');
 
-var routes = require('./routes/index.js');
+var routes = require('./routes/routes.js');
 // var usersRouter = require('./routes/users');
 
 var app = express();
