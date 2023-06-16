@@ -21,6 +21,6 @@ Após isso, rode o próximo comando para iniciar a hospedagem do servidor:
     npm start
 
 Acesse:
-- [localhost://](http://localhost:3000/)](http://localhost:3000/)
+- http://localhost:3000
 
 As credenciais de login estão presentes no .env da app.
