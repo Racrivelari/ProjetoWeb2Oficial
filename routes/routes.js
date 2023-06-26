@@ -1,7 +1,13 @@
 const express = require('express');
 const router = express.Router();
 require('dotenv').config();
-const auth = require('../middleware/auth')
+const auth = require('../middleware/auth');
+
+// const AgendamentoController = require('../controllers/agendamentoController');
+// const agendamento = new AgendamentoController();
+
+const PetController = require('../controllers/petController');
+const pet = new PetController();
 
 const nodemailer = require('nodemailer');
 
@@ -77,8 +83,14 @@ router.get('/agendamentos', auth, async(req, res) => {
   res.render('agendamentos')
 });
 
-router.get('/pets', auth, async(req, res) => {
-  res.render('pets')
+router.get('/pets', auth,  async(req, res) => {
+  pet.readPets()
+    .then((pets) => {
+      res.render('pets', { pets });
+    })
+    .catch((error) => {
+      res.status(500).json({ error: 'Ocorreu um erro ao buscar pets.' });
+    });
 });
 
 router.get('/perfil', auth, async(req, res) => {

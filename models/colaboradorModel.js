@@ -6,6 +6,7 @@ class ColaboradorDAO {
 
     async createColaborador(colaborador) {
         try {
+            colaborador.timestamp = new Date(); 
             const result = await this.collection.insertOne(colaborador);
             console.log('Colaborador inserido: ' + result.insertedId);
         } catch (error) {
