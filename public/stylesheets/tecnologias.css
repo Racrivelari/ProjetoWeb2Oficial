@@ -16,11 +16,26 @@ body {
     background-color: #F1DEC9
 }
 
-.nav-container {
+.nav-container{
     display: flex;
     justify-content: space-between;
     align-items: center;
+
 }
+
+.div-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+  
+  .div-links a:last-child {
+    width: auto;
+  }
+  
+  .div-links a {
+    margin-right: 70px;
+  }
 
 .img-logo {
     background-image: url("../images/logo-header.png");
@@ -29,7 +44,7 @@ body {
     width: 100px;
     height: 80px;
 }
-
+  
 header {
     background-color: #8B4513;
     color: #fff;
@@ -39,7 +54,7 @@ header {
 
 nav a {
     display: inline;
-    margin-right: 60px;
+    margin-right: 10px;
     color: #ffffff;
     text-decoration: none;
 }

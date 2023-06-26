@@ -18,7 +18,7 @@ const transporter = nodemailer.createTransport({
 
 // Rota envio de email - Contato
 
-router.post('/email', (req, res) => {   
+router.post('/email', auth, async(req, res) => {   
     
     const { email, nome, assunto, mensagem } = req.body;
     
@@ -36,6 +36,7 @@ router.post('/email', (req, res) => {
       } else {
         console.log('E-mail enviado: ' + info.response);
         res.send('E-mail enviado com sucesso!');
+        res.render('contato')
       }
     });
 });
@@ -60,7 +61,7 @@ router.get('/tecnologias', auth, async (req, res) => {
   res.render('tecnologias');
 });
 
-router.get('/criarConta', auth, async (req, res) => {
+router.get('/criarConta', async (req, res) => {
   res.render('criarConta')
 });
 
