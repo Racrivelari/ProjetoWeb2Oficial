@@ -21,17 +21,31 @@
           <a href="/home"><img class="img-logo" src="/images/logo-header.png" alt="Logo"></a>
         </div>
         <div class="div-links">
-            <a class="texto-mid-page" href="/agendamentos">Agendamentos</a>
-            <a class="texto-mid-page" href="/pets">Pets</a>
-            <a class="texto-mid-page" href="/perfil">Perfil</a>
-            <a id="btn-sair" href="/logout">Sair</a>
+          <a class="texto-mid-page" href="/agendamentos">Agendamentos</a>
+          <a class="texto-mid-page" href="/pets">Pets</a>
+          <a class="texto-mid-page" href="/perfil">Perfil</a>
+          <a id="btn-sair" href="/logout">Sair</a>
         </div>
       </div>
     </nav>
   </header>
     
-
-      
+  <section class="container-formulario">
+    <h2 id="formtitle">Cadastrar Agendamento</h2>
+    <form action="/agendamentos/" method="POST">
+      <label for="pet">Pet:</label>
+      <select id="pet" name="pet" required>
+        {{#pets}}
+        <option value="{{nome}}">{{nome}}</option>
+        {{/pets}}
+      </select>
+      <label for="tipoAgendamento">Tipo Agenda:</label>
+      <input type="text" id="tipoAgendamento" name="tipoAgendamento" required>
+      <label for="data">Data:</label>
+      <input type="text" id="data" name="data" required>
+      <input type="submit" value="Cadastrar" class="btn-cadastrar">
+    </form>
+  </section>
     
       <footer>
         <div id="div-footer"> 

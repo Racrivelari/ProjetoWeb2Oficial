@@ -7,15 +7,18 @@
   <title>Agendamentos</title>
   <link rel="icon" href="/images/logo-header2.png" type="image/x-icon">
   <link rel="stylesheet" href="/stylesheets/agendamentos.css" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 </head>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.16/jspdf.plugin.autotable.min.js"></script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 </style>
 
 <body>
-
 
   <header>
     <nav>
@@ -33,6 +36,41 @@
     </nav>
   </header>
 
+  <section id="lista-agendamentos" class="container">
+    <table class="table" id="myTable">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col" style="width: 7%;">ID</th>
+          <th scope="col">Pet</th>
+          <th scope="col">Tipo Agenda</th>
+          <th scope="col">Data</th>
+          <th scope="col">Colaborador</th>
+         <th></th>
+         <th></th>
+        </tr>
+      </thead>
+      <tbody id="tabela-agendamentos">
+        {{#agendamentos}}
+        <tr class="pet">
+          <td class="id">{{_id}}</td>
+          <td class="pet">{{pet}}</td>
+          <td class="tipoAgendamento">{{tipoAgendamento}}</td>
+          <td class="data">{{data}}</td>
+          <td class="nomeColaborador">{{nomeColaborador}}</td>
+          <td><button class="btn-editar" onclick="editarAgendamento('{{_id}}')">Editar</button></td>
+          <td><button class="btn-excluir" onclick="excluirAgendamento('{{_id}}')">Excluir</button></td>
+        </tr>
+        {{/agendamentos}}
+      </tbody>
+    </table>
+    <button style="margin-top: 20px"class="btn-extrair-pdf" onclick="exportToPdf()">Extrair PDF</button>
+
+    <form action="/agendamentos/criarAgendamento" method="GET">
+      <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+  </section>
+
+
   <footer>
     <div id="div-footer">
       <a class="texto-end1-page" href="https://www.linkedin.com/in/ramon-crivelari-batista-b73392234/"
@@ -46,6 +84,32 @@
     </div>
   </footer>
 
+  <script src="../javascripts/agendamentoFunctions.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $('#myTable').DataTable({
+        "lengthMenu": [1, 5, 10, 25, 50],
+        "language": {
+          "lengthMenu": "_MENU_ registros por página",
+          "zeroRecords": "Nenhum registro encontrado",
+          "info": "Página _PAGE_ de _PAGES_",
+          "infoEmpty": "Nenhum registro disponível",
+          "infoFiltered": "(filtrado de _MAX_ registros no total)",
+          "search": "Buscar",
+          "paginate": {
+            "first": "Primeiro",
+            "last": "Último",
+            "next": "Próximo",
+            "previous": "Anterior"
+          }
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>

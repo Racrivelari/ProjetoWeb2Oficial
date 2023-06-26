@@ -12,7 +12,7 @@ const mustacheExpress = require('mustache-express');
 const routes = require('./routes/routes.js');
 const colaboradorRoutes = require ('./routes/colaboradorRoutes.js');
 const petRoutes = require ('./routes/petRoutes.js');
-// const agendamentoRoutes = require ('./routes/agendamentoRoutes.js');
+const agendamentoRoutes = require ('./routes/agendamentoRoutes.js');
 
 app.engine('mustache', mustacheExpress());
 app.set('views', path.join(__dirname, 'views'));
@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 app.use('/', routes);
 app.use('/login', colaboradorRoutes);
 app.use('/pets', petRoutes);
-// app.use('/agendamentos', agendamentoRoutes);
+app.use('/agendamentos', agendamentoRoutes);
 
 
 app.listen(port, () => {
