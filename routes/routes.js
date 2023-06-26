@@ -49,16 +49,16 @@ router.get('/home', (req, res) => {
   res.render('home');
 });
 
-router.get('/about', (req, res) => {
-  res.render('about');
+router.get('/sobre', (req, res) => {
+  res.render('sobre');
 });
 
-router.get('/contact', (req, res) => {
-  res.render('contact');
+router.get('/contato', (req, res) => {
+  res.render('contato');
 });
 
-router.get('/tec', (req, res) => {
-  res.render('tec');
+router.get('/tecnologias', (req, res) => {
+  res.render('tecnologias');
 });
 
 
