@@ -47,11 +47,11 @@ class ColaboradorController {
     }
   }
 
-  async findById(idColab) {
+  async findOne(query) {
     try {
       await this.connection.connect();
       this.model = new ColaboradorModel(this.connection);
-      return await this.model.findById(idColab);
+      return await this.model.findOne(query);
     } finally {
       this.connection.close();
     }

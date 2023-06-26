@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-
-//envio de email
 require('dotenv').config();
+const auth = require('../middleware/auth')
+
 const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
@@ -45,9 +45,10 @@ router.get('/', (req, res) => {
   res.render('login');
 });
 
-router.get('/home', (req, res) => {
-  res.render('home');
+router.get('/home', auth, async(req, res) => {
+  res.render('home')
 });
+
 
 router.get('/sobre', (req, res) => {
   res.render('sobre');

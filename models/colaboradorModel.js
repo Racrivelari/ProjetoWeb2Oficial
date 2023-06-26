@@ -41,9 +41,9 @@ class ColaboradorDAO {
         }
     }
 
-    async findById(idColab) {
+    async findOne(query) {
         try {
-            const result = await this.collection.findOne(idColab);
+            const result = await this.collection.findOne(query);
             return (result);
         } catch (error) {
             console.error('Erro ao buscar colaborador', error);
