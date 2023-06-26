@@ -16,6 +16,7 @@ const transporter = nodemailer.createTransport({
   }
 });
 
+// Rota envio de email - Contato
 
 router.post('/email', (req, res) => {   
     
@@ -41,36 +42,54 @@ router.post('/email', (req, res) => {
 
 //
 
+// Rotas padroes
+
 router.get('/', (req, res) => {
   res.render('login');
 });
+
+router.get('/sobre', auth, async(req, res) => {
+  res.render('sobre');
+});
+
+router.get('/contato', auth, async (req, res) => {
+  res.render('contato');
+});
+
+router.get('/tecnologias', auth, async (req, res) => {
+  res.render('tecnologias');
+});
+
+router.get('/criarConta', auth, async (req, res) => {
+  res.render('criarConta')
+});
+
+//
+
+// Rotas operacoes logicas
 
 router.get('/home', auth, async(req, res) => {
   res.render('home')
 });
 
-
-router.get('/sobre', (req, res) => {
-  res.render('sobre');
+router.get('/agendamentos', auth, async(req, res) => {
+  res.render('agendamentos')
 });
 
-router.get('/contato', (req, res) => {
-  res.render('contato');
+router.get('/pets', auth, async(req, res) => {
+  res.render('pets')
 });
 
-router.get('/tecnologias', (req, res) => {
-  res.render('tecnologias');
+router.get('/perfil', auth, async(req, res) => {
+  res.render('editarConta')
 });
 
-router.get('/criarConta', (req, res) => {
-  res.render('criarConta')
-});
 
 router.get('/logout', auth, async(req, res) => {
   res.clearCookie('token');
   res.redirect('/');
 });
 
-
+// 
 
 module.exports = router;

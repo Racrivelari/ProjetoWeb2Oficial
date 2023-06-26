@@ -16,24 +16,22 @@ body {
     background-color: #F1DEC9
 }
 
-
-
 .nav-container{
     display: flex;
     justify-content: space-between;
     align-items: center;
 
 }
-  
-  .img-logo {
+
+.img-logo {
     background-image: url("../images/logo-header.png");
     background-repeat: no-repeat;
     background-size: contain;
     width: 100px;
     height: 80px;
-  }
+}
   
-  header {
+header {
     background-color: #8B4513;
     color: #fff;
     height: 80px;
@@ -51,7 +49,9 @@ nav a {
 section {
     text-align: center;
     margin: 20px;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .color-palette {
@@ -70,17 +70,19 @@ section {
 }
 
 .container-formulario {
-    display:flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 60px;
     background-color: #f2f2f2;
     width: 300px;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
     border-radius: 10px;
-    border: #000000 solid 2px; 
-}
-
+    border: #000000 solid 2px;
+    margin: 0 auto;
+    margin-top: 8%;
+  }
+  
+  
 .container-formulario h2 {
     margin-top: 0;
 }
