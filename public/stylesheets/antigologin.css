@@ -5,15 +5,18 @@
     font-family: 'Poppins', sans-serif;
 }
 
+
+html {
+    height: 100%;
+}
+
+
+
 body {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    width: 100%;
     background-image: url("../images/paw.jpg");
     background-position: center;
     background-size: cover;
@@ -45,14 +48,10 @@ body::after {
     font-size: 36px;
 }
 
-  header {
+header {
     background-color: #8B4513;
     color: #fff;
-    padding: 10px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    height: 80px;
     border-bottom: #000000 solid 3px;
 }
 
@@ -134,16 +133,14 @@ section {
 }
 
 footer {
-    
+    height: 30px;
     background-color: #8B4513;
     color: #fff;
-    padding: 3px;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
     border-top: #000000 solid 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
 }
 
 
