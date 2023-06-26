@@ -66,6 +66,10 @@ router.get('/criarConta', (req, res) => {
   res.render('criarConta')
 });
 
+router.get('/logout', auth, async(req, res) => {
+  res.clearCookie('token');
+  res.redirect('/');
+});
 
 
 
