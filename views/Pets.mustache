@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 </head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.16/jspdf.plugin.autotable.min.js"></script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 </style>
@@ -43,6 +46,8 @@
           <th scope="col">Porte</th>
           <th scope="col">Tipo</th>
           <th scope="col">Peso</th>
+         <th></th>
+         <th></th>
         </tr>
       </thead>
       <tbody id="tabela-pets">
@@ -54,12 +59,14 @@
           <td class="porte">{{porte}}</td>
           <td class="tipo">{{tipo}}</td>
           <td class="peso">{{peso}}</td>
-          <td><button class="btn-editar" onclick="editarProduto('{{_id}}', '{{nome}}')">editar</button></td>
-          <td><button class="btn-excluir" onclick="excluirProduto('{{_id}}', '{{nome}}')">excluir</button></td>
+          <td><button class="btn-editar" onclick="editarPet('{{_id}}', '{{nome}}')">editar</button></td>
+          <td><button class="btn-excluir" onclick="excluirPet('{{_id}}', '{{nome}}')">excluir</button></td>
         </tr>
         {{/pets}}
       </tbody>
     </table>
+
+    <button style="margin-top: 20px"class="btn-extrair-pdf" onclick="exportToPdf()">Extrair PDF</button>
 
     <form action="/pets/criarPet" method="GET">
       <button type="submit" class="btn btn-primary">Cadastrar</button>
@@ -80,7 +87,7 @@
     </div>
   </footer>
 
-  <script src="../public/javascripts/petFunctions.js"></script>
+  <script src="../javascripts/petFunctions.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
