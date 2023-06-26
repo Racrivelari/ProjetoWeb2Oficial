@@ -42,7 +42,7 @@ router.post('/email', (req, res) => {
 //
 
 router.get('/', (req, res) => {
-  res.render('index');
+  res.render('login');
 });
 
 router.get('/home', (req, res) => {
@@ -60,6 +60,11 @@ router.get('/contato', (req, res) => {
 router.get('/tecnologias', (req, res) => {
   res.render('tecnologias');
 });
+
+router.get('/criarConta', (req, res) => {
+  res.render('criarConta')
+});
+
 
 
 

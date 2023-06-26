@@ -10,6 +10,7 @@ app.use(cookieParser());
 const mustacheExpress = require('mustache-express');
 
 const routes = require('./routes/routes.js');
+const colaboradorRoutes = require ('./routes/colaboradorRoutes.js');
 
 app.engine('mustache', mustacheExpress());
 app.set('views', path.join(__dirname, 'views'));
@@ -22,6 +23,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/', routes);
+app.use('/login', colaboradorRoutes);
+
 
 app.listen(port, () => {
   console.log(`Servidor está rodando em http://localhost:${port}`);

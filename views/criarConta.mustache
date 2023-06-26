@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 , maximum-scale=1.0">
+  <title>Contato</title>
+  <link rel="icon" href="/images/logo-header.png" type="image/x-icon">
+  <link rel="stylesheet" href="/stylesheets/criarconta.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+</style>
+
+<body>
+
+  <header>
+    <nav>
+      <div class="nav-container">
+        <div class="img-logo"></div>
+        <div class="div-links">
+            <a class="texto-mid-page" href="/home">Home</a>
+            <a class="texto-mid-page" href="/sobre">Sobre</a>
+            <a class="texto-mid-page" href="/tecnologias">Tecnologias</a>
+            <a class="texto-mid-page" href="/contato">Contato</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+ <section class="container-formulario">
+   <h2 id="formtitle">Cadastrar</h2>
+  <form action="/login/novoColaborador" method="POST" style="max-width: 400px; margin: 0 auto;">
+    <div style="margin-bottom: 10px;">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" style="width: 100%;" required>
+    </div>
+    <div style="margin-bottom: 10px;">
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" style="width: 100%;" required>
+    </div>
+    <div style="margin-bottom: 10px;">
+      <label for="assunto">Senha:</label>
+      <input type="text" id="senha" name="senha" style="width: 100%;" required>
+    </div>
+    <div style="margin-bottom: 10px;">
+      <label for="mensagem">Confirme sua senha:</label>
+      <textarea id="mensagem" name="mensagem" style="width: 100%;" required></textarea>
+    </div>
+    <input type="submit" value="Enviar" style="width: 100%; background-color: #A0522D; color: #fff; padding: 10px;  border-radius: 20px;">
+  </form>
+</section>
+
+
+  <footer>
+    <a class="texto-end-page" href="https://www.linkedin.com/in/ramon-crivelari-batista-b73392234/" target="_blank">@Petweb</a>
+  </footer>
+
+</body>
+
+</html>
