@@ -38,8 +38,6 @@ body {
   }
 
 .img-logo {
-    background-image: url("../images/logo-header.png");
-    background-repeat: no-repeat;
     background-size: contain;
     width: 100px;
     height: 80px;
@@ -106,7 +104,7 @@ section {
 }
 
 .container-formulario input[type="submit"] {
-    background-color: #333;
+    background-color: #A0522D;  
     color: #fff;
     padding: 5px 10px;
     cursor: pointer;

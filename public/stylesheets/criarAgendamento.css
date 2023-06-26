@@ -35,8 +35,6 @@ body::after {
 
   
   .img-logo {
-    background-image: url("../images/logo-header.png");
-    background-repeat: no-repeat;
     background-size: contain;
     width: 100px;
     height: 80px;
