@@ -88,12 +88,14 @@ router.delete('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   const colaboradorId = req.user.colaboradorId;
-  const { pet, tipoAgendamento, data, nomeColaborador } = req.body;
+  const nomeColaborador = req.user.nome;
+  console.log(req.user);
+  const { pet, tipoAgendamento, data } = req.body;
   const novoAgendamento = {
     pet,
     tipoAgendamento,
     data,
-    // nomeColaborador,
+    nomeColaborador,
     colaboradorId,
     timestamp: new Date().getTime(), 
   };

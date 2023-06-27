@@ -15,10 +15,9 @@ class AgendamentoDAO {
         }
     }
 
-    async readAgendamentos(colaboradorId) {
+    async readAgendamentos() {
         try {
-            const agendamentos = await this.collection.find({ colaboradorId }).toArray();
-            console.log(agendamentos);
+            const agendamentos = await this.collection.find().toArray();
             return agendamentos;
         } catch (error) {
             console.error('Erro ao ler agendamentos:', error);

@@ -13,8 +13,10 @@ const authenticateToken = (req, res, next) => {
     }
 
     req.user = {
-      colaboradorId: decoded.colaboradorId
+      colaboradorId: decoded.colaboradorId,
+      nome: decoded.nome
     };
+
     next();
   });
 };

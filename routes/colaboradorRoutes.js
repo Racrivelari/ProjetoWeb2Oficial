@@ -35,7 +35,8 @@ router.post('/loginColaborador', async (req, res) => {
     const user = await colaboradorController.findOne({ email, senha });
 
     if (user) {
-      const token = jwt.sign({ colaboradorId: user._id }, process.env.JWT_PASSWORD, { expiresIn: '30min' });
+      const token = jwt.sign({ colaboradorId: user._id, nome: user.nome }, process.env.JWT_PASSWORD, { expiresIn: '30min' });
+      console.log(user.nome);
       res.cookie('token', token, { httpOnly: true });
       res.redirect('/home');
     } else {

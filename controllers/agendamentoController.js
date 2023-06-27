@@ -17,11 +17,11 @@ class AgendamentoController {
         }
     }
 
-    async readAgendamentos(colaboradorId) {
+    async readAgendamentos() {
         try {
             await this.connection.connect();
             this.model = new AgendamentoModel(this.connection);
-            return (await this.model.readAgendamentos(colaboradorId));
+            return (await this.model.readAgendamentos());
         } finally {
             this.connection.close();
         }

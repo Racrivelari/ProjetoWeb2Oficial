@@ -92,9 +92,7 @@ router.get('/pets', auth,  async(req, res) => {
 });
 
 router.get('/agendamentos', auth, async(req, res) => {
-  const colaboradorId = req.user.colaboradorId;
-  console.log(colaboradorId);
-  agendamento.readAgendamentos(colaboradorId)
+  agendamento.readAgendamentos()
     .then((agendamentos) => {
       console.log(agendamentos);
       res.render('agendamentos', { agendamentos });
