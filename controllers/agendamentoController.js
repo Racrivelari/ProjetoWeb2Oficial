@@ -47,6 +47,16 @@ class AgendamentoController {
         }
     }
 
+    async updateAgendamentoColaborador(nome, novoColaborador) {
+        try {
+            await this.connection.connect();
+            this.model = new AgendamentoModel(this.connection);
+            await this.model.updateAgendamentoPet(nome, novoColaborador);
+        } finally {
+            this.connection.close();
+        }
+    }
+
     async deleteAgendamento(idAgendamento) {
         try {
             await this.connection.connect();

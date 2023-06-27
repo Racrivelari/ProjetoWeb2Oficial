@@ -60,7 +60,7 @@ class PetController {
   async findOneByNome(query) {
     try {
       await this.connection.connect();
-      this.model = new ProdutoModel(this.connection);
+      this.model = new PetModel(this.connection);
       return await this.model.findOneByNome(query);
     } finally {
       this.connection.close();

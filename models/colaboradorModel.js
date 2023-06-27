@@ -17,7 +17,6 @@ class ColaboradorDAO {
     async readColaboradores() {
         try {
             const colaboradores = await this.collection.find().toArray();
-            console.log('Colaboradores: ', colaboradores);
             return(colaboradores)
         } catch (error) {
             console.error('Erro ao ler colaboradores:', error);
@@ -35,7 +34,7 @@ class ColaboradorDAO {
 
     async deleteColaborador(idColab) {
         try {
-            const result = await this.collection.deleteOne(idColab);
+            const result = await this.collection.deleteOne({ _id: idColab });
             console.log('Colaborador removido:', result.deletedCount);
         } catch (error) {
             console.error('Erro ao remover colaborador:', error);

@@ -28,7 +28,6 @@ class AgendamentoDAO {
         try {
             const query = { _id: new ObjectId(agendamentoId) };
             const update = { $set: novoAgendamento };
-            console.log(query)
             const result = await this.collection.updateOne(query, update);
             console.log('Agendamento atualizado :', result.modifiedCount);
         } catch (error) {
@@ -49,10 +48,21 @@ class AgendamentoDAO {
         }
       }
 
-    async deletePedido(agendamentoId) {
+      async updateAgendamentoColaborador(nome, novoColab) {
+        try {
+          const query = { nomeColaborador: nome };
+          const update = { $set: { nomeColaborador: novoColab } };
+          const result = await this.collection.updateMany(query, update);
+          console.log('Agendamentos atualizados:', result.modifiedCount);
+        } catch (error) {
+          console.error('Erro ao atualizar os agendamentos:', error);
+          throw error;
+        }
+      } 
+
+    async deleteAgendamento(agendamentoId) {
         try {
             const result = await this.collection.deleteOne({ _id: agendamentoId });
-            console.log(agendamentoId)
             console.log('Agendamento removido:', result.deletedCount);
         } catch (error) {
             console.error('Erro ao remover o agendamento:', error);

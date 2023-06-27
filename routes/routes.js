@@ -3,11 +3,11 @@ const router = express.Router();
 require('dotenv').config();
 const auth = require('../middleware/auth');
 
-const AgendamentoController = require('../controllers/agendamentoController');
-const agendamento = new AgendamentoController();
+// const AgendamentoController = require('../controllers/agendamentoController');
+// const agendamento = new AgendamentoController();
 
-const PetController = require('../controllers/petController');
-const pet = new PetController();
+// const PetController = require('../controllers/petController');
+// const pet = new PetController();
 
 const nodemailer = require('nodemailer');
 
@@ -67,51 +67,11 @@ router.get('/tecnologias', auth, async (req, res) => {
   res.render('tecnologias');
 });
 
-router.get('/criarConta', async (req, res) => {
-  res.render('criarConta')
-});
-
-//
-
-// Rotas operacoes logicas
-
-router.get('/home', auth, async(req, res) => {
-  res.render('home')
-});
-
-
-
-router.get('/pets', auth,  async(req, res) => {
-  pet.readPets()
-    .then((pets) => {
-      res.render('pets', { pets });
-    })
-    .catch((error) => {
-      res.status(500).json({ error: 'Ocorreu um erro ao buscar pets.' });
-    });
-});
-
-router.get('/agendamentos', auth, async(req, res) => {
-  agendamento.readAgendamentos()
-    .then((agendamentos) => {
-      console.log(agendamentos);
-      res.render('agendamentos', { agendamentos });
-    })
-    .catch((error) => {
-      res.status(500).json({ error: 'Ocorreu um erro ao obter os agendamentos.' });
-    });
-});
-
-router.get('/perfil', auth, async(req, res) => {
-  res.render('editarConta')
-});
-
-
 router.get('/logout', auth, async(req, res) => {
   res.clearCookie('token');
   res.redirect('/');
 });
 
-// 
+
 
 module.exports = router;

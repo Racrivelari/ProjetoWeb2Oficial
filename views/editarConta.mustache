@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="/stylesheets/editarConta.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
-  
+
+  <script src="../javascripts/colaboradorFunctions.js"></script>  
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
   </style>
@@ -18,19 +19,41 @@
     <nav>
       <div class="nav-container">
         <div class="img-logo">
-          <a href="/home"><img class="img-logo" src="/images/logo-header.png" alt="Logo"></a>
+          <a href="/agendamentos/agendamentos"><img class="img-logo" src="/images/logo-header.png" alt="Logo"></a>
         </div>
         <div class="div-links">
-            <a class="texto-mid-page" href="/agendamentos">Agendamentos</a>
-            <a class="texto-mid-page" href="/pets">Pets</a>
-            <a class="texto-mid-page" href="/perfil">Perfil</a>
+          <a class="texto-mid-page" href="/agendamentos/agendamentos">Agendamentos</a>
+          <a class="texto-mid-page" href="/pets/pets">Pets</a>
+          <a class="texto-mid-page" href="/colaboradores/telaEditar">Perfil</a>
             <a id="btn-sair" href="/logout">Sair</a>
         </div>
       </div>
     </nav>
   </header>
     
- 
+  <section class="container-formulario">
+    
+    <form action="/perfil/editarConta" method="POST">
+      <h2 id="formtitle">Cadastrar</h2>
+      <div style="margin-bottom: 10px;">
+        {{#colaborador}}
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" value="{{nome}}" style="width: 100%;" required>
+      </div>
+      <div style="margin-bottom: 10px;">
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" value="{{email}}" style="width: 100%;" required>
+      </div>
+      <div style="margin-bottom: 10px;">
+        <label for="assunto">Senha:</label>
+        <input type="password"minlength="6" id="senha" name="senha" value="{{senha}}" style="width: 100%;" required>
+      </div>
+      {{/colaborador}}
+      <input type="submit" value="Enviar" style="width: 100%; background-color: #A0522D; color: #fff; padding: 10px;  border-radius: 20px;">
+    </form>
+
+    <button type="button" class="btn-excluir" onclick="excluirColaborador('{{_id}}')">Excluir</button>
+  </section>
     
       <footer>
         <div id="div-footer"> 

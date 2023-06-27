@@ -19,7 +19,6 @@ class PetDAO {
     async readPets() {
         try {
             const pets = await this.collection.find().toArray();
-            console.log('Pets: ', pets);
             return(pets)
         } catch (error) {
             console.error('Erro ao ler pets:', error);

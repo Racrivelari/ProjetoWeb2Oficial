@@ -158,4 +158,58 @@ span{
     text-decoration: none;
     display: inline-block;
   }
+  section {
+    text-align: center;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#formtitle{
+    margin-bottom: 20px;
+}
+
+.container-formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px;
+    background-color: #f2f2f2;
+    width: 300px;
+    border-radius: 10px;
+    border: #000000 solid 2px;
+    margin: 0 auto;
+    margin-top: 8%;
+  }
   
+  
+.container-formulario h2 {
+    margin-top: 0;
+}
+
+.container-formulario label,
+.container-formulario input[type="text"],
+.container-formulario input[type="password"],
+.container-formulario input[type="submit"] {
+    display: block;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.container-formulario input,
+.container-formulario textarea{
+    border: #000000 solid 1px; 
+}
+
+.container-formulario input[type="submit"] {
+    background-color: #A0522D;  
+    color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+    width: 200px;
+    font-size: 16px;
+  
+}
