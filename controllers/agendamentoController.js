@@ -51,7 +51,7 @@ class AgendamentoController {
         try {
             await this.connection.connect();
             this.model = new AgendamentoModel(this.connection);
-            await this.model.updateAgendamentoPet(nome, novoColaborador);
+            await this.model.updateAgendamentoColaborador(nome, novoColaborador);
         } finally {
             this.connection.close();
         }

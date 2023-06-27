@@ -46,6 +46,7 @@ router.get('/telaEditar', auth, async(req, res) => {
 router.post('/editarConta',auth, async(req, res) => {
   const colaboradorId = req.user.colaboradorId;
   const nomeColab = req.user.nome;
+  console.log("Nome q sera utilizzado na edicao dos agendamentos" +req.user.nome);
   const {  nome, email, senha } = req.body;
   const colabAtualizado = {
     nome,
@@ -88,7 +89,6 @@ router.post('/loginColaborador', (req, res) => {
   .then(user => {
     if (user) {
       const token = jwt.sign({ colaboradorId: user._id, nome: user.nome }, process.env.JWT_PASSWORD, { expiresIn: '30min' });
-      console.log(user.nome);
       res.cookie('token', token, { httpOnly: true });
       res.redirect('/agendamentos/agendamentos');
     } else {
