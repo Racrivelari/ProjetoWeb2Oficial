@@ -1,3 +1,5 @@
+const { ObjectId } = require('mongodb');
+
 class ColaboradorDAO {
     constructor(connection) {
         this.connection = connection;
@@ -23,12 +25,14 @@ class ColaboradorDAO {
         }
     }
 
-    async updateColaborador(idColab, colabAtualizado) {
+    async updateColaborador(filter, updateColab) {
         try {
-            const result = await this.collection.updateOne(idColab, colabAtualizado);
-            console.log('Colaboradoor atualizado:', result.modifiedCount);
+            const query = { _id: new ObjectId(filter) };
+            const update = { $set: updateColab };
+            const result = await this.collection.updateOne(query, update);
+            console.log('Colaborador atualizado:', result.modifiedCount);
         } catch (error) {
-            console.error('Erro ao atualizar colaborador:', error);
+            console.error('Erro ao atualizar o colaborador:', error);
         }
     }
 
