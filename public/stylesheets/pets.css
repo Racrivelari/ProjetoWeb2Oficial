@@ -40,7 +40,7 @@ body {
     z-index: -1;
   }
 
-.nav-container{
+  .nav-container{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -150,6 +150,14 @@ span{
 
 .texto-end2-page:hover{
     color: rgb(0, 0, 0);
+}
+
+section {
+  text-align: center;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #btn-sair {

@@ -12,11 +12,11 @@ const agendamentoController = new AgendamentoController();
 const auth = require('../middleware/auth')
 router.use(auth);
 
-router.get('/criarPet', (req, res) => {
+router.get('/criarPet', async(req, res) => {
   res.render('criarPet');
 });
 
-router.get('/pets', auth,  async(req, res) => {
+router.get('/pets',  async(req, res) => {
   petController.readPets()
     .then((pets) => {
       res.render('pets', { pets });
@@ -26,20 +26,20 @@ router.get('/pets', auth,  async(req, res) => {
     });
 });
 
-router.get('/editarPet/:id', (req, res) => {
+router.get('/editarPet/:id',async (req, res) => {
   const petId = req.params.id;
 
   const ObjIdPet = new ObjectId(petId);
   petController.findOne(ObjIdPet)
-    .then((pets) => {
-      res.render('editarPet', { pets });
+    .then((pet) => {
+      res.render('editarPet', { pet: pet });
     })
     .catch((error) => {
-      res.status(500).json({ error: 'Ocorreu um erro ao buscar pet.' });
+      res.status(500).json({ error: 'Ocorreu um erro ao buscar pet.' + error});
     });
 });
 
-router.post('/editarPet', (req, res) => {
+router.post('/editarPet',async (req, res) => {
   const { id, nome, idade, porte, tipo, peso, nomeAntigo } = req.body;
   const petAtualizado = {
     nome,
@@ -64,7 +64,7 @@ router.post('/editarPet', (req, res) => {
     });
 });
 
-router.delete('/:id/:nome', (req, res) => {
+router.delete('/:id/:nome', async(req, res) => {
   const petId = req.params.id;
   const nomePet = req.params.nome;
   const ObjIdPet = new ObjectId(petId);
@@ -82,7 +82,7 @@ router.delete('/:id/:nome', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/', async(req, res) => {
   const { nome, idade, porte, tipo, peso } = req.body;
 
   const novoPet = {

@@ -46,7 +46,6 @@ router.get('/telaEditar', auth, async(req, res) => {
 router.post('/editarConta',auth, async(req, res) => {
   const colaboradorId = req.user.colaboradorId;
   const nomeColab = req.user.nome;
-  console.log("Nome q sera utilizzado na edicao dos agendamentos" +req.user.nome);
   const {  nome, email, senha } = req.body;
   const colabAtualizado = {
     nome,

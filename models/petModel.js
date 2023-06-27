@@ -1,4 +1,3 @@
-const { query } = require('express');
 const { ObjectId } = require('mongodb');
 class PetDAO {
     constructor(connection) {

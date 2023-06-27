@@ -12,7 +12,7 @@ const petController = new PetController();
 const auth = require('../middleware/auth')
 router.use(auth);
 
-router.get('/criarAgendamento', (req, res) => {
+router.get('/criarAgendamento', async (req, res) => {
   petController.readPets()
     .then((pets) => {
       res.render('criarAgendamento', { pets });
@@ -22,7 +22,7 @@ router.get('/criarAgendamento', (req, res) => {
 
 });
 
-router.get('/agendamentos', auth, async(req, res) => {
+router.get('/agendamentos', async(req, res) => {
   agendamentoController.readAgendamentos()
     .then((agendamentos) => {
       res.render('agendamentos', { agendamentos });
@@ -41,16 +41,16 @@ router.get('/editarAgendamento/:id', async (req, res) => {
     const pet = await petController.findOneByNome(agendamentos.pet);
     let pets = await petController.readPets();
     
-    pets = pets.filter((pet) => pet.nome !== pet.nome);
+    pets = pets.filter((pets) => pets.nome !== pet.nome);
     
     res.render('editarAgendamento', { agendamentos, pet, pets });
   } catch (error) {
-    res.status(500).json({ error: 'Ocorreu um erro ao buscar o agendamento.' });
+    res.status(500).json({ error: 'Ocorreu um erro ao buscar o agendamento.' +error });
   }
 });
 
 
-router.post('/editarAgendamento', (req, res) => {
+router.post('/editarAgendamento', async (req, res) => {
   const colaboradorId = req.user.colaboradorId;
   const nomeColaborador = req.user.nome;
 
@@ -73,10 +73,9 @@ router.post('/editarAgendamento', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
   const agendamentoId = req.params.id;
   const teste = new ObjectId(agendamentoId);
-
   agendamentoController.deleteAgendamento(teste)
     .then((result) => {
       res.status(200).json({ result: result + "Agendamento deletado." });
@@ -86,7 +85,7 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/', async(req, res) => {
   const colaboradorId = req.user.colaboradorId;
   const nomeColaborador = req.user.nome;
   const { pet, tipoAgendamento, data } = req.body;
