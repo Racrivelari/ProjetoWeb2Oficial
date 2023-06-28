@@ -10,6 +10,8 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
@@ -64,18 +66,18 @@
           <td class="tipo">{{tipo}}</td>
           <td class="peso">{{peso}}</td>
           <td class="nomeCliente">{{nomeCliente}}</td>
-          <td><button class="btn-editar" onclick="editarPet('{{_id}}', '{{nome}}')">editar</button></td>
-          <td><button class="btn-excluir" onclick="excluirPet('{{_id}}', '{{nome}}')">excluir</button></td>
+          <td><button class="btn-editar" onclick="editarPet('{{_id}}', '{{nome}}')"><i class="fas fa-edit"></i></button></td>
+          <td><button class="btn-excluir" onclick="excluirPet('{{_id}}', '{{nome}}')"><i class="fas fa-trash"></i></button></td>
         </tr>
         {{/pets}}
       </tbody>
     </table>
-
-    <button style="margin-top: 20px"class="btn-extrair-pdf" onclick="exportToPdf()">Extrair PDF</button>
-
-    <form action="/pets/criarPet" method="GET">
-      <button type="submit" class="btn btn-primary">Cadastrar</button>
-    </form>
+    <div class="d-flex justify-content-center">
+      <button style="background-color: #212529;border-color: #32383e;" class="btn btn-primary mr-2" onclick="exportToPdf()">Extrair PDF</button>
+      <form action="/pets/criarPet" method="GET">
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+      </form>
+    </div>
   </section>
 
 
@@ -101,7 +103,7 @@
       $('#myTable').DataTable({
         "lengthMenu": [5, 10, 25, 50],
         "language": {
-          "lengthMenu": "Registros por página_MENU_",
+          "lengthMenu": "Exibição_MENU_",
           "zeroRecords": "Nenhum registro encontrado",
           "info": "Página _PAGE_ de _PAGES_",
           "infoEmpty": "Nenhum registro disponível",

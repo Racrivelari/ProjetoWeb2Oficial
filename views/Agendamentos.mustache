@@ -10,6 +10,8 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
 </head>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
@@ -60,17 +62,18 @@
           <td class="tipoAgendamento">{{tipoAgendamento}}</td>
           <td class="data">{{data}}</td>
           <td class="nomeColaborador">{{nomeColaborador}}</td>
-          <td><button class="btn-editar" onclick="editarAgendamento('{{_id}}')">Editar</button></td>
-          <td><button class="btn-excluir" onclick="excluirAgendamento('{{_id}}')">Excluir</button></td>
+          <td><button class="btn-editar" onclick="editarAgendamento('{{_id}}')"><i class="fas fa-edit"></i></button></td>
+          <td><button class="btn-excluir" onclick="excluirAgendamento('{{_id}}')"><i class="fas fa-trash"></i></button></td>
         </tr>
         {{/agendamentos}}
       </tbody>
     </table>
-    <button style="margin-top: 20px"class="btn-extrair-pdf" onclick="exportToPdf()">Extrair PDF</button>
-
-    <form action="/agendamentos/criarAgendamento" method="GET">
-      <button type="submit" class="btn btn-primary">Cadastrar</button>
-    </form>
+    <div class="d-flex justify-content-center">
+      <button style="background-color: #212529;border-color: #32383e;" class="btn btn-primary mr-2" onclick="exportToPdf()">Extrair PDF</button>
+      <form action="/agendamentos/criarAgendamento" method="GET">
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+      </form>
+    </div>
   </section>
 
 

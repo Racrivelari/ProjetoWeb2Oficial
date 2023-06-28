@@ -213,3 +213,17 @@ span{
     font-size: 16px;
   
 }
+
+.btn-excluir{
+    background-color: red;
+    width: 80px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 5px;
+    position: relative;
+    box-sizing: border-box;
+    transition: all 500ms ease; 
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+}
