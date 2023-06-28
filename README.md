@@ -11,16 +11,12 @@ Para poder iniciar o projeto, é interessante ter previamente a seguinte tecnolo
 
 ### Instalando dependências
 
-Após instalar o Node.js em sua máquina, rode o seguinte comando para instalar as dependências do projeto:
+Após instalar o Node.js em sua máquina, rode o seguinte comando para instalar as dependências do projeto e rodar a aplicação:
 
-
-    npm install
-
-Após isso, rode o próximo comando para iniciar a hospedagem do servidor:
 
     npm start
+
 
 Acesse:
 - http://localhost:3000
 
-As credenciais de login estão presentes no .env da app.

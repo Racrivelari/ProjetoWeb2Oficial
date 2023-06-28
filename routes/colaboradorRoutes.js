@@ -99,7 +99,7 @@ router.delete('/', auth, async (req, res) => {
         res.status(200).json({ result: result + "Conta deletada." });
     })
     .catch((error) => {
-      res.status(500).json({ error: error + 'Ocorreu um erro ao remvoer o agendamento com o pet parametrizado.' });
+      res.status(500).json({ error: error + 'Ocorreu um erro ao remover o agendamento com o pet parametrizado.' });
     });
 });
 

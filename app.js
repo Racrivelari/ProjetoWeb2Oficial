@@ -1,7 +1,17 @@
+const fs = require('fs');
+var path = require('path');
+const { execSync } = require('child_process');
+
+const nodeModulesExists = fs.existsSync(path.join(__dirname, 'node_modules'));
+
+if (!nodeModulesExists) {
+  console.log('Iniciando aplicação por favor aguarde...');
+  execSync('npm install --force-sync');
+}
+
 const express = require('express');
 const app = express();
 require('dotenv').config();
-var path = require('path');
 const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
