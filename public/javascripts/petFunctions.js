@@ -43,12 +43,12 @@ function exportToPdf(){
     }
 
     // Define a largura das colunas
-    const columnWidths = [60, 25, 25, 25, 25, 25, 25];
+    const columnWidths = [50, 25, 20, 25, 25, 20, 25];
 
     // Gera a tabela no PDF
     doc.autoTable({
         startY: y,
-        head: [["ID", "Nome", "Idade", "Porte", "Tipo", "Peso"]],
+        head: [["ID", "Nome", "Idade", "Porte", "Tipo", "Peso", "Cliente"]],
         body: tableData,
         columnStyles: {
             0: { cellWidth: columnWidths[0] },

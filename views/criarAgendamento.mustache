@@ -40,9 +40,13 @@
         {{/pets}}
       </select>
       <label for="tipoAgendamento">Tipo Agenda:</label>
-      <input type="text" id="tipoAgendamento" name="tipoAgendamento" required>
+      <select id="tipoAgendamento" name="tipoAgendamento" required>
+        <option value="Consulta">Consulta</option>
+        <option value="Tosa">Tosa</option>
+        <option value="Banho">Banho</option>
+      </select>
       <label for="data">Data:</label>
-      <input type="text" id="data" name="data" required>
+      <input type="date" id="data" name="data" required>
       <input type="submit" value="Cadastrar" class="btn-cadastrar">
     </form>
   </section>

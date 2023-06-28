@@ -43,13 +43,24 @@
         <label for="idade">Idade:</label>
         <input type="number" id="idade" name="idade"  value="{{idade}}"required>
         <label for="porte">Porte:</label>
-        <input type="text" id="porte" name="porte"  value="{{porte}}"required>
+        <select id="porte" name="porte" required>
+          <option value="{{porte}}">{{porte}}</option>
+          <option value="Pequeno">Pequeno</option>
+          <option value="Medio">Medio</option>
+          <option value="Grande">Grande</option>
+        </select>
         <label for="tipo">Tipo:</label>
-        <input type="text" id="tipo" name="tipo"  value="{{tipo}}"required>
+        <select id="tipo" name="tipo" required>
+          <option value="{{tipo}}">{{tipo}}</option>
+          <option value="Silvestre">Silvestre</option>
+          <option value="Domestico">Domestico</option>
+        </select>        
         <label for="peso">Peso:</label>
         <input type="number" id="peso" name="peso"  value="{{peso}}"required>
+        <label for="nomeCliente">Nome Cliente:</label>
+        <input type="text" id="nomeCliente" name="nomeCliente"  value="{{nomeCliente}}"required>
         <input type="hidden" name="nomeAntigo" value="{{nome}}">
-      {{/pet}}
+        {{/pet}}
       <input type="submit" value="Enviar" style="width: 100%; background-color: #A0522D; color: #fff; padding: 10px;  border-radius: 20px;">
     </form>
 

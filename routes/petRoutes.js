@@ -40,13 +40,14 @@ router.get('/editarPet/:id',async (req, res) => {
 });
 
 router.post('/editarPet',async (req, res) => {
-  const { id, nome, idade, porte, tipo, peso, nomeAntigo } = req.body;
+  const { id, nome, idade, porte, tipo, peso, nomeCliente, nomeAntigo } = req.body;
   const petAtualizado = {
     nome,
     idade,
     porte,
     tipo,
     peso,
+    nomeCliente,
     timestamp: new Date().getTime(), 
   };
 
@@ -83,7 +84,7 @@ router.delete('/:id/:nome', async(req, res) => {
 });
 
 router.post('/', async(req, res) => {
-  const { nome, idade, porte, tipo, peso } = req.body;
+  const { nome, idade, porte, tipo, peso, nomeCliente} = req.body;
 
   const novoPet = {
     nome,
@@ -91,6 +92,7 @@ router.post('/', async(req, res) => {
     porte,
     tipo,
     peso,
+    nomeCliente,
     timestamp: new Date().getTime(), 
   };
 
@@ -102,4 +104,29 @@ router.post('/', async(req, res) => {
       res.status(500).json({ error: 'Ocorreu um erro ao inserir o pet.' });
     });
 });
+
+router.get('/carregarPets', async function(req, res, next) {
+  const colaboradorId = req.user.colaboradorId;
+  const nomeColaborador = req.user.nome;
+
+  const pets = [
+    {colaboradorId: colaboradorId, nome: 'Mel', idade: 1, porte: 'Pequeno', tipo: "Silvestre", peso: 2, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
+    {colaboradorId: colaboradorId, nome: 'Coelho', idade: 2, porte: 'Médio', tipo: "Domestico", peso: 4, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
+    {colaboradorId:colaboradorId, nome: 'Tutu', idade: 3, porte: 'Grande', tipo: "Silvestre", peso: 1, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
+    { colaboradorId: colaboradorId,nome: 'Flop', idade: 4, porte: 'Grande', tipo: "Domestico", peso: 2, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
+    { colaboradorId: colaboradorId,nome: 'Meow', idade: 5, porte: 'Pequeno', tipo: "Domestico", peso: 3, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
+  ];
+
+  try {
+    for (const pet of pets) {
+      await petController.createPet(pet);
+    }
+    res.redirect('/pets/pets');
+  } catch (error) {
+    console.error('Ocorreu um erro ao realizar a carga automática de pets:', error);
+    res.status(500).json({ error: 'Ocorreu um erro ao realizar a carga automática de pets.' });
+  }
+});
+
+
 module.exports = router;

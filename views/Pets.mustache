@@ -29,9 +29,9 @@
           <a href="/agendamentos/agendamentos"><img class="img-logo" src="/images/logo-header.png" alt="Logo"></a>
         </div>
         <div class="div-links">
-          <a class="texto-mid-page" href="/agendamentos/agendamentos">Agendamentos</a>
-          <a class="texto-mid-page" href="/pets/pets">Pets</a>
-          <a class="texto-mid-page" href="/colaboradores/telaEditar">Perfil</a>
+          <a class="texto-mid-page" href="/agendamentos/agendamentos" style="color: #ffffff; text-decoration: none;" >Agendamentos</a>
+          <a class="texto-mid-page" href="/pets/pets" style="color: #ffffff; text-decoration: none;" >Pets</a>
+          <a class="texto-mid-page" href="/colaboradores/telaEditar" style="color: #ffffff; text-decoration: none;">Perfil</a>
             <a id="btn-sair" href="/logout">Sair</a>
         </div>
       </div>
@@ -39,6 +39,7 @@
   </header>
 
   <section id="lista-pets" class="container">
+    <h2 class= "txt-tbl">Pets</h2>
     <table class="table" id="myTable">
       <thead class="thead-dark">
         <tr>
@@ -48,6 +49,7 @@
           <th scope="col">Porte</th>
           <th scope="col">Tipo</th>
           <th scope="col">Peso</th>
+          <th scope="col">Nome Cliente</th>
          <th></th>
          <th></th>
         </tr>
@@ -61,6 +63,7 @@
           <td class="porte">{{porte}}</td>
           <td class="tipo">{{tipo}}</td>
           <td class="peso">{{peso}}</td>
+          <td class="nomeCliente">{{nomeCliente}}</td>
           <td><button class="btn-editar" onclick="editarPet('{{_id}}', '{{nome}}')">editar</button></td>
           <td><button class="btn-excluir" onclick="excluirPet('{{_id}}', '{{nome}}')">excluir</button></td>
         </tr>
@@ -78,15 +81,16 @@
 
   <footer>
     <div id="div-footer"> 
-      <a class="texto-end1-page" href="https://www.linkedin.com/in/ramon-crivelari-batista-b73392234/" target="_blank">@Petweb</a>
+    <a class="texto-end1-page" href="https://www.linkedin.com/in/ramon-crivelari-batista-b73392234/" target="_blank" style="color: #ffffff; text-decoration: none;">@Petweb</a>
      <span style = "margin: 0 5px">|</span>
-     <a class="texto-end2-page" href="/sobre">Sobre</a>
+     <a class="texto-end2-page" href="/sobre" style="color: #ffffff; text-decoration: none;">Sobre</a>
      <span style = "margin: 0 5px">|</span>
-     <a class="texto-end2-page" href="/tecnologias">Tecnologias</a>
+     <a class="texto-end2-page" href="/tecnologias" style="color: #ffffff; text-decoration: none;">Tecnologias</a>
      <span style = "margin: 0 5px">|</span>
-     <a class="texto-end2-page" href="/contato">Contato</a>
+     <a class="texto-end2-page" href="/contato" style="color: #ffffff; text-decoration: none;" >Contato</a>
    </div>
    </footer>
+
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
@@ -97,14 +101,12 @@
       $('#myTable').DataTable({
         "lengthMenu": [5, 10, 25, 50],
         "language": {
-          "lengthMenu": "_MENU_ registros por página",
+          "lengthMenu": "Registros por página_MENU_",
           "zeroRecords": "Nenhum registro encontrado",
           "info": "Página _PAGE_ de _PAGES_",
           "infoEmpty": "Nenhum registro disponível",
-          "infoFiltered": "(filtrado de _MAX_ registros no total)",
           "search": "Buscar",
           "paginate": {
-            "first": "Primeiro",
             "last": "Último",
             "next": "Próximo",
             "previous": "Anterior"
