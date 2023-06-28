@@ -18,7 +18,7 @@ class PetDAO {
     async readPets() {
         try {
             const pets = await this.collection.find().toArray();
-            return(pets)
+            return (pets)
         } catch (error) {
             console.error('Erro ao ler pets:', error);
         }
@@ -26,8 +26,8 @@ class PetDAO {
 
     async updatePet(idPet, petAtualizado) {
         try {
-            const id = {_id: new ObjectId(idPet)};
-            const att = {$set: petAtualizado};
+            const id = { _id: new ObjectId(idPet) };
+            const att = { $set: petAtualizado };
             const result = await this.collection.updateOne(id, att);
             console.log('Pet atualizado:', result.modifiedCount);
         } catch (error) {
@@ -46,16 +46,16 @@ class PetDAO {
 
     async findOne(query) {
         try {
-            const result = await this.collection.findOne({_id : query});
+            const result = await this.collection.findOne({ _id: query });
             return (result);
         } catch (error) {
             console.error('Erro ao buscar pet', error);
         }
-      }
-    
+    }
+
     async findOneByNome(query) {
         try {
-            const result = await this.collection.findOne({nome : query});
+            const result = await this.collection.findOne({ nome: query });
             return (result);
         } catch (error) {
             console.error('Erro ao buscar pet pelo nome', error);

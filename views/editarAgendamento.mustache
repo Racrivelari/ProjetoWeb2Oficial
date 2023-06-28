@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/images/logo-header2.png" type="image/x-icon">
-    <link rel="stylesheet" href="/stylesheets/editarAgendamento.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  </head>
-  
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/images/logo-header2.png" type="image/x-icon">
+  <link rel="stylesheet" href="/stylesheets/editarAgendamento.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+</style>
 
 <body>
 
@@ -24,12 +25,12 @@
           <a class="texto-mid-page" href="/agendamentos/agendamentos">Agendamentos</a>
           <a class="texto-mid-page" href="/pets/pets">Pets</a>
           <a class="texto-mid-page" href="/colaboradores/telaEditar">Perfil</a>
-            <a id="btn-sair" href="/logout">Sair</a>
+          <a id="btn-sair" href="/logout">Sair</a>
         </div>
       </div>
     </nav>
   </header>
-    
+
   <section class="container-formulario">
     <h2 id="formtitle">Editar Agendamento</h2>
     <form action="/agendamentos/editarAgendamento" method="POST">
@@ -48,14 +49,14 @@
       </select>
       {{#agendamentos}}
       <label for="tipoAgendamento">Tipo Agenda:</label>
-        <select id="tipoAgendamento" name="tipoAgendamento" required>
-          <option value="{{tipoAgendamento}}">{{tipoAgendamento}}</option>
-          <option value="Consulta">Consulta</option>
-          <option value="Tosa">Tosa</option>
-          <option value="Banho">Banho</option>
-        </select>
+      <select id="tipoAgendamento" name="tipoAgendamento" required>
+        <option value="{{tipoAgendamento}}">{{tipoAgendamento}}</option>
+        <option value="Consulta">Consulta</option>
+        <option value="Tosa">Tosa</option>
+        <option value="Banho">Banho</option>
+      </select>
       <label for="data">Data:</label>
-      <input type="date" id="data" name="data"value="{{data}}" required>
+      <input type="date" id="data" name="data" value="{{data}}" required>
       <input type="submit" value="Editar" class="btn-cadastrar">
       {{/agendamentos}}
     </form>
@@ -63,19 +64,21 @@
     <div class="error-message">{{error}}</div>
     {{/error}}
   </section>
-      
-    
+
+
   <footer>
-    <div id="div-footer"> 
-      <a class="texto-end1-page" href="https://www.linkedin.com/in/ramon-crivelari-batista-b73392234/" target="_blank">@Petweb</a>
-     <span style = "margin: 0 5px">|</span>
-     <a class="texto-end2-page" href="/sobre">Sobre</a>
-     <span style = "margin: 0 5px">|</span>
-     <a class="texto-end2-page" href="/tecnologias">Tecnologias</a>
-     <span style = "margin: 0 5px">|</span>
-     <a class="texto-end2-page" href="/contato">Contato</a>
-   </div>
-   </footer>
-    
+    <div id="div-footer">
+      <a class="texto-end1-page" href="https://www.linkedin.com/in/ramon-crivelari-batista-b73392234/"
+        target="_blank">@Petweb</a>
+      <span style="margin: 0 5px">|</span>
+      <a class="texto-end2-page" href="/sobre">Sobre</a>
+      <span style="margin: 0 5px">|</span>
+      <a class="texto-end2-page" href="/tecnologias">Tecnologias</a>
+      <span style="margin: 0 5px">|</span>
+      <a class="texto-end2-page" href="/contato">Contato</a>
+    </div>
+  </footer>
+
 </body>
+
 </html>

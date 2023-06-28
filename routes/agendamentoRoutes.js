@@ -21,12 +21,12 @@ router.get('/criarAgendamento', async (req, res) => {
     .then((pets) => {
       res.render('criarAgendamento', { pets });
     }).catch((error) => {
-      res.status(500).json({ error: 'Ocorreu um erro ao buscar agendamento.' + error});
+      res.status(500).json({ error: 'Ocorreu um erro ao buscar agendamento.' + error });
     });
 
 });
 
-router.get('/agendamentos', async(req, res) => {
+router.get('/agendamentos', async (req, res) => {
   agendamentoController.readAgendamentos()
     .then((agendamentos) => {
       res.render('agendamentos', { agendamentos });
@@ -40,16 +40,16 @@ router.get('/editarAgendamento/:id', async (req, res) => {
   try {
     const agendamentoId = req.params.id;
     const teste = new ObjectId(agendamentoId);
-    
+
     const agendamentos = await agendamentoController.findOne(teste);
     const pet = await petController.findOneByNome(agendamentos.pet);
     let pets = await petController.readPets();
-    
+
     pets = pets.filter((pets) => pets.nome !== pet.nome);
-    
+
     res.render('editarAgendamento', { agendamentos, pet, pets });
   } catch (error) {
-    res.status(500).json({ error: 'Ocorreu um erro ao buscar o agendamento.' +error });
+    res.status(500).json({ error: 'Ocorreu um erro ao buscar o agendamento.' + error });
   }
 });
 
@@ -78,12 +78,12 @@ router.post('/editarAgendamento', async (req, res) => {
     data,
     nomeColaborador,
     colaboradorId,
-    timestamp: new Date().getTime(), 
+    timestamp: new Date().getTime(),
   };
 
   const { error } = validation.validateAgendamento(novoAgendamento);
 
-   if (error) {
+  if (error) {
     return agendamentoController.findOne(new ObjectId(id))
       .then((agendamentos) => {
         res.render('editarAgendamento', { agendamentos, error: error.details[0].message });

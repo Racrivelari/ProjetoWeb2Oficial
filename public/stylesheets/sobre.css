@@ -1,8 +1,8 @@
 * {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: 'Poppins', sans-serif;
 }
 
 
@@ -19,7 +19,7 @@ body {
 }
 
 
-.nav-container{
+.nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -78,21 +78,21 @@ nav a {
 }
 
 
-#img-sobre{
+#img-sobre {
   width: 350px;
   height: 350px;
 }
-  
-  p {
-    flex-grow: 1;
-    font-size: 26px;
-  }
+
+p {
+  flex-grow: 1;
+  font-size: 26px;
+}
 
 
-img{
-    width: 500px;
-    height: 500px;
-    margin-right: 20px;
+img {
+  width: 500px;
+  height: 500px;
+  margin-right: 20px;
 }
 
 footer {
@@ -106,63 +106,63 @@ footer {
   margin-top: auto;
 }
 
-#div-footer{
+#div-footer {
   display: flex;
-   flex-direction: row;
-   align-items: center;
-   justify-content: center; 
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
-.texto-mid-page{
+.texto-mid-page {
   text-align: center;
   font-size: 16px;
   border-radius: 5px;
   position: relative;
   box-sizing: border-box;
-  transition: all 500ms ease; 
+  transition: all 500ms ease;
   color: white;
   text-decoration: none;
   display: inline-block;
 }
 
-span{
+span {
   margin: 0 5px;
   color: #000000;
 }
 
-.texto-mid-page:hover{
+.texto-mid-page:hover {
   color: rgb(0, 0, 0);
   -webkit-transform: scale(1.3);
   -ms-transform: scale(1.3);
   transform: scale(1.3);
 }
 
-.texto-end1-page{
+.texto-end1-page {
   text-align: center;
   color: white;
   font-size: 16px;
   border-radius: 5px;
   position: relative;
   box-sizing: border-box;
-  transition: all 500ms ease; 
+  transition: all 500ms ease;
   text-decoration: none;
   display: inline-block;
 }
 
-.texto-end2-page{
+.texto-end2-page {
   text-align: center;
   color: white;
   font-size: 16px;
   border-radius: 5px;
   position: relative;
   box-sizing: border-box;
-  transition: all 500ms ease; 
+  transition: all 500ms ease;
   text-decoration: none;
   display: inline-block;
 }
 
 
-.texto-end2-page:hover{
+.texto-end2-page:hover {
   color: rgb(0, 0, 0);
 }
 
@@ -174,11 +174,8 @@ span{
   border-radius: 5px;
   position: relative;
   box-sizing: border-box;
-  transition: all 500ms ease; 
+  transition: all 500ms ease;
   color: white;
   text-decoration: none;
   display: inline-block;
 }
-
-
-

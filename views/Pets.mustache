@@ -8,7 +8,8 @@
   <link rel="icon" href="/images/logo-header2.png" type="image/x-icon">
   <link rel="stylesheet" href="/stylesheets/pets.css" />
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -31,17 +32,19 @@
           <a href="/agendamentos/agendamentos"><img class="img-logo" src="/images/logo-header.png" alt="Logo"></a>
         </div>
         <div class="div-links">
-          <a class="texto-mid-page" href="/agendamentos/agendamentos" style="color: #ffffff; text-decoration: none;" >Agendamentos</a>
-          <a class="texto-mid-page" href="/pets/pets" style="color: #ffffff; text-decoration: none;" >Pets</a>
-          <a class="texto-mid-page" href="/colaboradores/telaEditar" style="color: #ffffff; text-decoration: none;">Perfil</a>
-            <a id="btn-sair" href="/logout">Sair</a>
+          <a class="texto-mid-page" href="/agendamentos/agendamentos"
+            style="color: #ffffff; text-decoration: none;">Agendamentos</a>
+          <a class="texto-mid-page" href="/pets/pets" style="color: #ffffff; text-decoration: none;">Pets</a>
+          <a class="texto-mid-page" href="/colaboradores/telaEditar"
+            style="color: #ffffff; text-decoration: none;">Perfil</a>
+          <a id="btn-sair" href="/logout">Sair</a>
         </div>
       </div>
     </nav>
   </header>
 
   <section id="lista-pets" class="container">
-    <h2 class= "txt-tbl">Pets</h2>
+    <h2 class="txt-tbl">Pets</h2>
     <table class="table" id="myTable">
       <thead class="thead-dark">
         <tr>
@@ -52,8 +55,8 @@
           <th scope="col">Tipo</th>
           <th scope="col">Peso</th>
           <th scope="col">Nome Cliente</th>
-         <th></th>
-         <th></th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody id="tabela-pets">
@@ -66,14 +69,17 @@
           <td class="tipo">{{tipo}}</td>
           <td class="peso">{{peso}}</td>
           <td class="nomeCliente">{{nomeCliente}}</td>
-          <td><button class="btn-editar" onclick="editarPet('{{_id}}', '{{nome}}')"><i class="fas fa-edit"></i></button></td>
-          <td><button class="btn-excluir" onclick="excluirPet('{{_id}}', '{{nome}}')"><i class="fas fa-trash"></i></button></td>
+          <td><button class="btn-editar" onclick="editarPet('{{_id}}', '{{nome}}')"><i class="fas fa-edit"></i></button>
+          </td>
+          <td><button class="btn-excluir" onclick="excluirPet('{{_id}}', '{{nome}}')"><i
+                class="fas fa-trash"></i></button></td>
         </tr>
         {{/pets}}
       </tbody>
     </table>
     <div class="d-flex justify-content-center">
-      <button style="background-color: #212529;border-color: #32383e;" class="btn btn-primary mr-2" onclick="exportToPdf()">Extrair PDF</button>
+      <button style="background-color: #212529;border-color: #32383e;" class="btn btn-primary mr-2"
+        onclick="exportToPdf()">Extrair PDF</button>
       <form action="/pets/criarPet" method="GET">
         <button type="submit" class="btn btn-primary">Cadastrar</button>
       </form>
@@ -82,16 +88,17 @@
 
 
   <footer>
-    <div id="div-footer"> 
-    <a class="texto-end1-page" href="https://www.linkedin.com/in/ramon-crivelari-batista-b73392234/" target="_blank" style="color: #ffffff; text-decoration: none;">@Petweb</a>
-     <span style = "margin: 0 5px">|</span>
-     <a class="texto-end2-page" href="/sobre" style="color: #ffffff; text-decoration: none;">Sobre</a>
-     <span style = "margin: 0 5px">|</span>
-     <a class="texto-end2-page" href="/tecnologias" style="color: #ffffff; text-decoration: none;">Tecnologias</a>
-     <span style = "margin: 0 5px">|</span>
-     <a class="texto-end2-page" href="/contato" style="color: #ffffff; text-decoration: none;" >Contato</a>
-   </div>
-   </footer>
+    <div id="div-footer">
+      <a class="texto-end1-page" href="https://www.linkedin.com/in/ramon-crivelari-batista-b73392234/" target="_blank"
+        style="color: #ffffff; text-decoration: none;">@Petweb</a>
+      <span style="margin: 0 5px">|</span>
+      <a class="texto-end2-page" href="/sobre" style="color: #ffffff; text-decoration: none;">Sobre</a>
+      <span style="margin: 0 5px">|</span>
+      <a class="texto-end2-page" href="/tecnologias" style="color: #ffffff; text-decoration: none;">Tecnologias</a>
+      <span style="margin: 0 5px">|</span>
+      <a class="texto-end2-page" href="/contato" style="color: #ffffff; text-decoration: none;">Contato</a>
+    </div>
+  </footer>
 
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

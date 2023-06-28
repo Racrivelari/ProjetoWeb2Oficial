@@ -27,7 +27,7 @@ class PetController {
     try {
       await this.connection.connect();
       this.model = new PetModel(this.connection);
-      return(await this.model.readPets());
+      return (await this.model.readPets());
     } finally {
       this.connection.close();
     }

@@ -8,7 +8,7 @@ class ColaboradorDAO {
 
     async createColaborador(colaborador) {
         try {
-            colaborador.timestamp = new Date(); 
+            colaborador.timestamp = new Date();
             const result = await this.collection.insertOne(colaborador);
             console.log('Colaborador inserido: ' + result.insertedId);
         } catch (error) {
@@ -19,7 +19,7 @@ class ColaboradorDAO {
     async readColaboradores() {
         try {
             const colaboradores = await this.collection.find().toArray();
-            return(colaboradores)
+            return (colaboradores)
         } catch (error) {
             console.error('Erro ao ler colaboradores:', error);
         }
@@ -52,7 +52,7 @@ class ColaboradorDAO {
         } catch (error) {
             console.error('Erro ao buscar colaborador', error);
         }
-      }
+    }
 
 }
 

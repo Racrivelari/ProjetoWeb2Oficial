@@ -14,7 +14,7 @@ class ColaboradorController {
     if (error) {
       throw new Error(error.details[0].message);
     }
-  
+
     try {
       await this.connection.connect();
       this.model = new ColaboradorModel(this.connection);
@@ -23,12 +23,12 @@ class ColaboradorController {
       this.connection.close();
     }
   }
-  
+
   async readColaboradores() {
     try {
       await this.connection.connect();
       this.model = new ColaboradorModel(this.connection);
-      return(await this.model.readColaboradores());
+      return (await this.model.readColaboradores());
     } finally {
       this.connection.close();
     }

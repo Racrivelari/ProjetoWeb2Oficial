@@ -20,9 +20,9 @@ app.use(cookieParser());
 const mustacheExpress = require('mustache-express');
 
 const routes = require('./routes/routes');
-const colaboradorRoutes = require ('./routes/colaboradorRoutes');
-const petRoutes = require ('./routes/petRoutes');
-const agendamentoRoutes = require ('./routes/agendamentoRoutes');
+const colaboradorRoutes = require('./routes/colaboradorRoutes');
+const petRoutes = require('./routes/petRoutes');
+const agendamentoRoutes = require('./routes/agendamentoRoutes');
 
 app.engine('mustache', mustacheExpress());
 app.set('views', path.join(__dirname, 'views'));

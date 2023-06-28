@@ -52,8 +52,14 @@ router.post('/email', auth, async(req, res) => {
 // Rotas padroes
 
 router.get('/', (req, res) => {
-  res.render('login');
+  const error = req.query.error;
+  if (error) {
+    res.render('login', { error }); 
+  } else {
+    res.render('login'); 
+  }
 });
+
 
 router.get('/sobre', auth, async(req, res) => {
   res.render('sobre');

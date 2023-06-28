@@ -45,7 +45,7 @@ router.post('/novoColaborador', (req, res) => {
     });
 });
 
-router.get('/telaEditar', auth, async(req, res) => {
+router.get('/telaEditar', auth, async (req, res) => {
   const colaboradorId = req.user.colaboradorId;
   const ObjIdColab = new ObjectId(colaboradorId);
   colaboradorController.findOne(ObjIdColab)
@@ -89,14 +89,12 @@ router.post('/editarConta', auth, async (req, res) => {
   }
 });
 
-
-
 router.delete('/', auth, async (req, res) => {
   const colaboradorId = req.user.colaboradorId;
   const ObjIdColab = new ObjectId(colaboradorId);
   colaboradorController.deleteColaborador(ObjIdColab)
     .then((result) => {
-        res.status(200).json({ result: result + "Conta deletada." });
+      res.status(200).json({ result: result + "Conta deletada." });
     })
     .catch((error) => {
       res.status(500).json({ error: error + 'Ocorreu um erro ao remover o agendamento com o pet parametrizado.' });
@@ -106,22 +104,21 @@ router.delete('/', auth, async (req, res) => {
 router.post('/loginColaborador', (req, res) => {
   const email = req.body.email;
   const senha = req.body.senha;
-  
+
   colaboradorController.findOne({ email, senha })
-  .then(user => {
-    if (user) {
-      const token = jwt.sign({ colaboradorId: user._id, nome: user.nome }, process.env.JWT_PASSWORD, { expiresIn: '30min' });
-      res.cookie('token', token, { httpOnly: true });
-      res.redirect('/agendamentos/agendamentos');
-    } else {
-      res.status(400).json({ error: 'Email ou senha inválidos' });
-    }
- 
-})
-.catch(error => {
-  console.error(error);
-  res.status(500).send('Erro interno do servidor');
-});
+    .then(user => {
+      if (user) {
+        const token = jwt.sign({ colaboradorId: user._id, nome: user.nome }, process.env.JWT_PASSWORD, { expiresIn: '30min' });
+        res.cookie('token', token, { httpOnly: true });
+        res.redirect('/agendamentos/agendamentos');
+      } else {
+        res.redirect('/?error=Email+ou+senha+inválidos');
+      }
+
+    })
+    .catch(error => {
+      res.redirect('/?error=' + error);
+    });
 });
 
 module.exports = router;

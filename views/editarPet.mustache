@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/images/logo-header2.png" type="image/x-icon">
-    <link rel="stylesheet" href="/stylesheets/editarPet.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  </head>
-  
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/images/logo-header2.png" type="image/x-icon">
+  <link rel="stylesheet" href="/stylesheets/editarPet.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+</style>
 
 <body>
 
@@ -24,59 +25,62 @@
           <a class="texto-mid-page" href="/agendamentos/agendamentos">Agendamentos</a>
           <a class="texto-mid-page" href="/pets/pets">Pets</a>
           <a class="texto-mid-page" href="/colaboradores/telaEditar">Perfil</a>
-            <a id="btn-sair" href="/logout">Sair</a>
+          <a id="btn-sair" href="/logout">Sair</a>
         </div>
       </div>
     </nav>
   </header>
-    
+
   <section class="container-formulario">
     <h2 id="formtitle">Editar pet</h2>
     <form action="/pets/editarPet" method="POST">
-        {{#pet}}
-        <label for="id">ID:</label>
-        <input type="text" id="id" name="id" value="{{_id}}" readonly>
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" value="{{nome}}"required>
-        <label for="idade">Idade:</label>
-        <input type="number" id="idade" name="idade"  value="{{idade}}"required>
-        <label for="porte">Porte:</label>
-        <select id="porte" name="porte" required>
-          <option value="{{porte}}">{{porte}}</option>
-          <option value="Pequeno">Pequeno</option>
-          <option value="Medio">Medio</option>
-          <option value="Grande">Grande</option>
-        </select>
-        <label for="tipo">Tipo:</label>
-        <select id="tipo" name="tipo" required>
-          <option value="{{tipo}}">{{tipo}}</option>
-          <option value="Silvestre">Silvestre</option>
-          <option value="Domestico">Domestico</option>
-        </select>        
-        <label for="peso">Peso:</label>
-        <input type="number" id="peso" name="peso"  value="{{peso}}"required>
-        <label for="nomeCliente">Nome Cliente:</label>
-        <input type="text" id="nomeCliente" name="nomeCliente"  value="{{nomeCliente}}"required>
-        <input type="hidden" name="nomeAntigo" value="{{nome}}">
-        {{/pet}}
-      <input type="submit" value="Enviar" style="width: 100%; background-color: #A0522D; color: #fff; padding: 10px;  border-radius: 20px;">
+      {{#pet}}
+      <label for="id">ID:</label>
+      <input type="text" id="id" name="id" value="{{_id}}" readonly>
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" value="{{nome}}" required>
+      <label for="idade">Idade:</label>
+      <input type="number" id="idade" name="idade" value="{{idade}}" required>
+      <label for="porte">Porte:</label>
+      <select id="porte" name="porte" required>
+        <option value="{{porte}}">{{porte}}</option>
+        <option value="Pequeno">Pequeno</option>
+        <option value="Medio">Medio</option>
+        <option value="Grande">Grande</option>
+      </select>
+      <label for="tipo">Tipo:</label>
+      <select id="tipo" name="tipo" required>
+        <option value="{{tipo}}">{{tipo}}</option>
+        <option value="Silvestre">Silvestre</option>
+        <option value="Domestico">Domestico</option>
+      </select>
+      <label for="peso">Peso:</label>
+      <input type="number" id="peso" name="peso" value="{{peso}}" required>
+      <label for="nomeCliente">Nome Cliente:</label>
+      <input type="text" id="nomeCliente" name="nomeCliente" value="{{nomeCliente}}" required>
+      <input type="hidden" name="nomeAntigo" value="{{nome}}">
+      {{/pet}}
+      <input type="submit" value="Enviar"
+        style="width: 100%; background-color: #A0522D; color: #fff; padding: 10px;  border-radius: 20px;">
     </form>
     {{#error}}
-      <div class="error-message">{{error}}</div>
+    <div class="error-message">{{error}}</div>
     {{/error}}
   </section>
-    
+
   <footer>
-    <div id="div-footer"> 
-      <a class="texto-end1-page" href="https://www.linkedin.com/in/ramon-crivelari-batista-b73392234/" target="_blank">@Petweb</a>
-     <span style = "margin: 0 5px">|</span>
-     <a class="texto-end2-page" href="/sobre">Sobre</a>
-     <span style = "margin: 0 5px">|</span>
-     <a class="texto-end2-page" href="/tecnologias">Tecnologias</a>
-     <span style = "margin: 0 5px">|</span>
-     <a class="texto-end2-page" href="/contato">Contato</a>
-   </div>
-   </footer>
-    
+    <div id="div-footer">
+      <a class="texto-end1-page" href="https://www.linkedin.com/in/ramon-crivelari-batista-b73392234/"
+        target="_blank">@Petweb</a>
+      <span style="margin: 0 5px">|</span>
+      <a class="texto-end2-page" href="/sobre">Sobre</a>
+      <span style="margin: 0 5px">|</span>
+      <a class="texto-end2-page" href="/tecnologias">Tecnologias</a>
+      <span style="margin: 0 5px">|</span>
+      <a class="texto-end2-page" href="/contato">Contato</a>
+    </div>
+  </footer>
+
 </body>
+
 </html>

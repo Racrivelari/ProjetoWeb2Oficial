@@ -17,11 +17,11 @@ const agendamentoController = new AgendamentoController();
 const auth = require('../middleware/auth')
 router.use(auth);
 
-router.get('/criarPet', async(req, res) => {
+router.get('/criarPet', async (req, res) => {
   res.render('criarPet');
 });
 
-router.get('/pets',  async(req, res) => {
+router.get('/pets', async (req, res) => {
   petController.readPets()
     .then((pets) => {
       res.render('pets', { pets });
@@ -31,7 +31,7 @@ router.get('/pets',  async(req, res) => {
     });
 });
 
-router.get('/editarPet/:id',async (req, res) => {
+router.get('/editarPet/:id', async (req, res) => {
   const petId = req.params.id;
 
   const ObjIdPet = new ObjectId(petId);
@@ -40,11 +40,11 @@ router.get('/editarPet/:id',async (req, res) => {
       res.render('editarPet', { pet: pet });
     })
     .catch((error) => {
-      res.status(500).json({ error: 'Ocorreu um erro ao buscar pet.' + error});
+      res.status(500).json({ error: 'Ocorreu um erro ao buscar pet.' + error });
     });
 });
 
-router.post('/editarPet',async (req, res) => {
+router.post('/editarPet', async (req, res) => {
   const { id, nome, idade, porte, tipo, peso, nomeCliente, nomeAntigo } = req.body;
   const petAtualizado = {
     nome,
@@ -53,12 +53,12 @@ router.post('/editarPet',async (req, res) => {
     tipo,
     peso,
     nomeCliente,
-    timestamp: new Date().getTime(), 
+    timestamp: new Date().getTime(),
   };
 
   const { error } = validation.validatePet(petAtualizado);
 
-   if (error) {
+  if (error) {
     return petController.findOne(new ObjectId(id))
       .then((pet) => {
         res.render('editarPet', { pet, error: error.details[0].message });
@@ -77,7 +77,7 @@ router.post('/editarPet',async (req, res) => {
   }
 });
 
-router.delete('/:id/:nome', async(req, res) => {
+router.delete('/:id/:nome', async (req, res) => {
   const petId = req.params.id;
   const nomePet = req.params.nome;
   const ObjIdPet = new ObjectId(petId);
@@ -95,8 +95,8 @@ router.delete('/:id/:nome', async(req, res) => {
     });
 });
 
-router.post('/', async(req, res) => {
-  const { nome, idade, porte, tipo, peso, nomeCliente} = req.body;
+router.post('/', async (req, res) => {
+  const { nome, idade, porte, tipo, peso, nomeCliente } = req.body;
 
   const novoPet = {
     nome,
@@ -105,7 +105,7 @@ router.post('/', async(req, res) => {
     tipo,
     peso,
     nomeCliente,
-    timestamp: new Date().getTime(), 
+    timestamp: new Date().getTime(),
   };
 
   const { error } = validation.validatePet(novoPet);
@@ -122,16 +122,16 @@ router.post('/', async(req, res) => {
     });
 });
 
-router.get('/carregarPets', async function(req, res) {
+router.get('/carregarPets', async function (req, res) {
   const colaboradorId = req.user.colaboradorId;
   const nomeColaborador = req.user.nome;
 
   const pets = [
-    {colaboradorId: colaboradorId, nome: 'Mel', idade: 1, porte: 'Pequeno', tipo: "Silvestre", peso: 2, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
-    {colaboradorId: colaboradorId, nome: 'Coelho', idade: 2, porte: 'Médio', tipo: "Domestico", peso: 4, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
-    {colaboradorId: colaboradorId, nome: 'Tutu', idade: 3, porte: 'Grande', tipo: "Silvestre", peso: 1, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
-    {colaboradorId: colaboradorId, nome: 'Flop', idade: 4, porte: 'Grande', tipo: "Domestico", peso: 2, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
-    {colaboradorId: colaboradorId, nome: 'Meow', idade: 5, porte: 'Pequeno', tipo: "Domestico", peso: 3, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
+    { colaboradorId: colaboradorId, nome: 'Mel', idade: 1, porte: 'Pequeno', tipo: "Silvestre", peso: 2, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
+    { colaboradorId: colaboradorId, nome: 'Coelho', idade: 2, porte: 'Médio', tipo: "Domestico", peso: 4, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
+    { colaboradorId: colaboradorId, nome: 'Tutu', idade: 3, porte: 'Grande', tipo: "Silvestre", peso: 1, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
+    { colaboradorId: colaboradorId, nome: 'Flop', idade: 4, porte: 'Grande', tipo: "Domestico", peso: 2, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
+    { colaboradorId: colaboradorId, nome: 'Meow', idade: 5, porte: 'Pequeno', tipo: "Domestico", peso: 3, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
   ];
 
   try {

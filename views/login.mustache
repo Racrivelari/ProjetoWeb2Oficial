@@ -28,6 +28,9 @@
           <br>
           <input type="submit" value="Entrar" class="btn-entrar">        
         </form>
+        {{#error}}
+          <div class="error-message">{{error}}</div>
+        {{/error}}
         <a class ="criarConta" href="/colaboradores/criarConta">Criar conta</a>
       </section>
     </div>

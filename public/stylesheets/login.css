@@ -6,39 +6,39 @@
 }
 
 body {
-    margin: 0;
-    padding: 0;
-  }
+  margin: 0;
+  padding: 0;
+}
 
-  .container {
-    display: flex;
-    height: 100vh;
-    align-items: center;
-    justify-content: center;
-  }
+.container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
 
-  .left-section {
-    width: 60%;
-    height: 100vh;
-    background-image: url('../images/paw.jpg');
-    background-size: cover;
-  }
+.left-section {
+  width: 60%;
+  height: 100vh;
+  background-image: url('../images/paw.jpg');
+  background-size: cover;
+}
 
-  .right-section {
-    width: 40%;
-    height: 100vh;
-    background-color: #8B4513;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.right-section {
+  width: 40%;
+  height: 100vh;
+  background-color: #8B4513;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-#formtitle{
+#formtitle {
   margin-bottom: 30px;
 }
 
 .container-formulario {
-  display:flex;
+  display: flex;
   padding: 60px;
   background-color: #f2f2f2;
   width: 300px;
@@ -46,7 +46,7 @@ body {
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-  border: #000000 solid 3px; 
+  border: #000000 solid 3px;
 }
 
 .container-formulario label,
@@ -60,18 +60,18 @@ body {
 }
 
 .container-formulario input,
-.container-formulario textarea{
-  border: #000000 solid 1px; 
+.container-formulario textarea {
+  border: #000000 solid 1px;
 }
 
-.btn-entrar{
-  display: block; 
-  margin: 0 auto; 
+.btn-entrar {
+  display: block;
+  margin: 0 auto;
   border-radius: 20px;
 }
 
 .container-formulario input[type="submit"] {
-  background-color: #A0522D;  
+  background-color: #A0522D;
   color: #fff;
   padding: 5px 10px;
   cursor: pointer;
@@ -79,12 +79,8 @@ body {
   width: 150px;
 }
 
-.criarConta{
+.criarConta {
   display: flex;
   margin-top: 20px;
   justify-content: center;
 }
-
-
-
-

@@ -7,7 +7,7 @@ class AgendamentoDAO {
 
     async createAgendamento(agendamento) {
         try {
-            agendamento.timestamp = new Date(); 
+            agendamento.timestamp = new Date();
             const result = await this.collection.insertOne(agendamento);
             console.log('Agendamento criado:', result.insertedId);
         } catch (error) {
@@ -38,27 +38,27 @@ class AgendamentoDAO {
 
     async updateAgendamentoPet(nome, novoPet) {
         try {
-          const query = { pet: nome };
-          const update = { $set: { pet: novoPet } };
-          const result = await this.collection.updateMany(query, update);
-          console.log('Agendamentos atualizados:', result.modifiedCount);
+            const query = { pet: nome };
+            const update = { $set: { pet: novoPet } };
+            const result = await this.collection.updateMany(query, update);
+            console.log('Agendamentos atualizados:', result.modifiedCount);
         } catch (error) {
-          console.error('Erro ao atualizar os agendamentos:', error);
-          throw error;
+            console.error('Erro ao atualizar os agendamentos:', error);
+            throw error;
         }
-      }
+    }
 
-      async updateAgendamentoColaborador(nome, novoColab) {
+    async updateAgendamentoColaborador(nome, novoColab) {
         try {
-          const query = { nomeColaborador: nome };
-          const update = { $set: { nomeColaborador: novoColab } };
-          const result = await this.collection.updateMany(query, update);
-          console.log('Agendamentos atualizados:', result.modifiedCount);
+            const query = { nomeColaborador: nome };
+            const update = { $set: { nomeColaborador: novoColab } };
+            const result = await this.collection.updateMany(query, update);
+            console.log('Agendamentos atualizados:', result.modifiedCount);
         } catch (error) {
-          console.error('Erro ao atualizar os agendamentos:', error);
-          throw error;
+            console.error('Erro ao atualizar os agendamentos:', error);
+            throw error;
         }
-      } 
+    }
 
     async deleteAgendamento(agendamentoId) {
         try {

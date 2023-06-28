@@ -9,10 +9,10 @@ function excluirPet(id, nome) {
 }
 
 function editarPet(id) {
-  window.location.href = `/pets/editarPet/${id}`;
+    window.location.href = `/pets/editarPet/${id}`;
 }
 
-function exportToPdf(){
+function exportToPdf() {
     const tabelaPets = document.getElementById("tabela-pets");
     const rows = tabelaPets.getElementsByTagName("tr");
 
