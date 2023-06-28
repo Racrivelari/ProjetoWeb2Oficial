@@ -1,7 +1,6 @@
 function excluirColaborador() {
     fetch(`/colaboradores/`, { method: "DELETE" })
         .then(() => {
-            // location.href = location.href;
             window.location.href = '/logout';
         })
         .catch((error) => {
@@ -9,6 +8,3 @@ function excluirColaborador() {
         });
 }
 
-// function editarConta(id) {
-//   window.location.href = `/perfil/editarConta/${id}`;
-// }

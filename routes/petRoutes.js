@@ -70,19 +70,6 @@ router.post('/editarPet',async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: 'Ocorreu um erro ao atualizar o pet.' });
   }
-
-  // petController.updatePet(id, petAtualizado)
-  //   .then(() => {
-  //     agendamentoController.updateAgendamentoPet(nomeAntigo, nome)
-  //       .then(() => {
-  //         res.redirect('/pets/pets');
-  //       }).catch((error) => {
-  //         res.status(500).json({ error: 'Ocorreu um erro ao atualizar o pet1.' });
-  //       });
-  //   })
-  //   .catch((error) => {
-  //     res.status(500).json({ error: 'Ocorreu um erro ao atualizar o pet2.' });
-  //   });
 });
 
 router.delete('/:id/:nome', async(req, res) => {

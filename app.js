@@ -25,7 +25,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/', routes);
-// app.use('/login', colaboradorRoutes);
 app.use('/colaboradores', colaboradorRoutes);
 app.use('/pets', petRoutes);
 app.use('/agendamentos', agendamentoRoutes);
