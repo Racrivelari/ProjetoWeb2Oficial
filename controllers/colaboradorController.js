@@ -1,3 +1,4 @@
+const Joi = require('joi');
 const DBConnection = require('../models/DAO');
 const ColaboradorModel = require('../models/colaboradorModel.js');
 
@@ -7,7 +8,23 @@ class ColaboradorController {
     this.model = null;
   }
 
+  validateColaborador(colaborador) {
+    const schema = Joi.object({
+      nome: Joi.string().required(),
+      email: Joi.string().email().required(),
+      senha: Joi.string().required(),
+      timestamp: Joi.date().timestamp() 
+    });
+
+    return schema.validate(colaborador);  
+  }
+
   async createColaborador(colaborador) {
+    const { error } = this.validateColaborador(colaborador);
+    if (error) {
+      throw new Error(error.details[0].message);
+    }
+  
     try {
       await this.connection.connect();
       this.model = new ColaboradorModel(this.connection);
@@ -16,6 +33,7 @@ class ColaboradorController {
       this.connection.close();
     }
   }
+  
 
   async readColaboradores() {
     try {
@@ -28,6 +46,10 @@ class ColaboradorController {
   }
 
   async updateColaborador(idColab, colabAtualizado) {
+    const { error } = this.validateColaborador(colabAtualizado);
+    if (error) {
+      throw new Error(error.details[0].message);
+    }
     try {
       await this.connection.connect();
       this.model = new ColaboradorModel(this.connection);

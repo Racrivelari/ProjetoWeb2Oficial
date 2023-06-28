@@ -22,12 +22,18 @@ router.post('/novoColaborador', (req, res) => {
     senha,
     timestamp: new Date().getTime(),
   };
+
+  const { error } = colaboradorController.validateColaborador(novoColaborador);
+  if (error) {
+    return res.render('criarConta', { error: error.details[0].message });
+  }
+
   colaboradorController.createColaborador(novoColaborador)
     .then(() => {
       res.redirect('/');
     })
     .catch((error) => {
-      res.status(500).json({ error: 'Ocorreu um erro ao cadastrar o colaborador.' });
+      res.status(500).json({ error: 'Ocorreu um erro ao cadastrar o colaborador.' + error });
     });
 });
 
@@ -43,30 +49,39 @@ router.get('/telaEditar', auth, async(req, res) => {
     });
 });
 
-router.post('/editarConta',auth, async(req, res) => {
+router.post('/editarConta', auth, async (req, res) => {
   const colaboradorId = req.user.colaboradorId;
   const nomeColab = req.user.nome;
-  const {  nome, email, senha } = req.body;
+  const { nome, email, senha } = req.body;
   const colabAtualizado = {
     nome,
     email,
     senha,
-    timestamp: new Date().getTime(), 
+    timestamp: new Date().getTime(),
   };
 
-  colaboradorController.updateColaborador(colaboradorId, colabAtualizado)
-    .then(() => {
-      agendamentoController.updateAgendamentoColaborador(nomeColab, nome)
-        .then(() => {
-          res.redirect('/agendamentos/agendamentos');
-        }).catch((error) => {
-          res.status(500).json({ error: 'Ocorreu um erro ao redirecionar.' });
-        });
-    })
-    .catch((error) => {
-      res.status(500).json({ error: 'Ocorreu um erro ao atualizar o agendamento.' });
-    });
+  const { error } = colaboradorController.validateColaborador(colabAtualizado);
+
+  if (error) {
+    return colaboradorController.findOne(new ObjectId(colaboradorId))
+      .then((colaborador) => {
+        res.render('editarConta', { colaborador, error: error.details[0].message });
+      })
+      .catch(() => {
+        res.status(500).json({ error: 'Ocorreu um erro ao buscar colaborador.' });
+      });
+  }
+
+  try {
+    await colaboradorController.updateColaborador(colaboradorId, colabAtualizado);
+    await agendamentoController.updateAgendamentoColaborador(nomeColab, nome);
+    res.redirect('/agendamentos/agendamentos');
+  } catch (error) {
+    res.status(500).json({ error: 'Ocorreu um erro ao atualizar o colab.' });
+  }
 });
+
+
 
 router.delete('/', auth, async (req, res) => {
   const colaboradorId = req.user.colaboradorId;

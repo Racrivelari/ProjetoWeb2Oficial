@@ -52,7 +52,9 @@
       {{/colaborador}}
       <input type="submit" value="Enviar" style="width: 100%; background-color: #A0522D; color: #fff; padding: 10px;  border-radius: 20px;">
     </form>
-
+    {{#error}}
+      <div class="error-message">{{error}}</div>
+    {{/error}}
     <button type="button" class="btn-excluir" onclick="excluirColaborador('{{_id}}')">Excluir</button>
   </section>
     
