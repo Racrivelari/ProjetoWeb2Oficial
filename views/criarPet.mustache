@@ -54,6 +54,9 @@
       <input type="text" id="nomeCliente" name="nomeCliente" required>
       <input type="submit" value="Cadastrar" class="btn-cadastrar">
     </form>
+    {{#error}}
+    <div class="error-message">{{error}}</div>
+    {{/error}}
   </section>
     
   <footer>

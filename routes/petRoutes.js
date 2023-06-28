@@ -51,18 +51,38 @@ router.post('/editarPet',async (req, res) => {
     timestamp: new Date().getTime(), 
   };
 
-  petController.updatePet(id, petAtualizado)
-    .then(() => {
-      agendamentoController.updateAgendamentoPet(nomeAntigo, nome)
-        .then(() => {
-          res.redirect('/pets/pets');
-        }).catch((error) => {
-          res.status(500).json({ error: 'Ocorreu um erro ao atualizar o pet1.' });
-        });
-    })
-    .catch((error) => {
-      res.status(500).json({ error: 'Ocorreu um erro ao atualizar o pet2.' });
-    });
+  const { error } = petController.validatePet(petAtualizado);
+
+   if (error) {
+    return petController.findOne(new ObjectId(id))
+      .then((pet) => {
+        res.render('editarPet', { pet, error: error.details[0].message });
+      })
+      .catch(() => {
+        res.status(500).json({ error: 'Ocorreu um erro ao buscar pet.' });
+      });
+  }
+
+  try {
+    await petController.updatePet(id, petAtualizado);
+    await agendamentoController.updateAgendamentoPet(nomeAntigo, nome);
+    res.redirect('/pets/pets');
+  } catch (error) {
+    res.status(500).json({ error: 'Ocorreu um erro ao atualizar o pet.' });
+  }
+
+  // petController.updatePet(id, petAtualizado)
+  //   .then(() => {
+  //     agendamentoController.updateAgendamentoPet(nomeAntigo, nome)
+  //       .then(() => {
+  //         res.redirect('/pets/pets');
+  //       }).catch((error) => {
+  //         res.status(500).json({ error: 'Ocorreu um erro ao atualizar o pet1.' });
+  //       });
+  //   })
+  //   .catch((error) => {
+  //     res.status(500).json({ error: 'Ocorreu um erro ao atualizar o pet2.' });
+  //   });
 });
 
 router.delete('/:id/:nome', async(req, res) => {
@@ -96,6 +116,11 @@ router.post('/', async(req, res) => {
     timestamp: new Date().getTime(), 
   };
 
+  const { error } = petController.validatePet(novoPet);
+  if (error) {
+    return res.render('criarPet', { error: error.details[0].message });
+  }
+
   petController.createPet(novoPet)
     .then(() => {
       res.redirect('/pets/pets')
@@ -105,16 +130,16 @@ router.post('/', async(req, res) => {
     });
 });
 
-router.get('/carregarPets', async function(req, res, next) {
+router.get('/carregarPets', async function(req, res) {
   const colaboradorId = req.user.colaboradorId;
   const nomeColaborador = req.user.nome;
 
   const pets = [
     {colaboradorId: colaboradorId, nome: 'Mel', idade: 1, porte: 'Pequeno', tipo: "Silvestre", peso: 2, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
     {colaboradorId: colaboradorId, nome: 'Coelho', idade: 2, porte: 'Médio', tipo: "Domestico", peso: 4, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
-    {colaboradorId:colaboradorId, nome: 'Tutu', idade: 3, porte: 'Grande', tipo: "Silvestre", peso: 1, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
-    { colaboradorId: colaboradorId,nome: 'Flop', idade: 4, porte: 'Grande', tipo: "Domestico", peso: 2, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
-    { colaboradorId: colaboradorId,nome: 'Meow', idade: 5, porte: 'Pequeno', tipo: "Domestico", peso: 3, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
+    {colaboradorId: colaboradorId, nome: 'Tutu', idade: 3, porte: 'Grande', tipo: "Silvestre", peso: 1, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
+    {colaboradorId: colaboradorId, nome: 'Flop', idade: 4, porte: 'Grande', tipo: "Domestico", peso: 2, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
+    {colaboradorId: colaboradorId, nome: 'Meow', idade: 5, porte: 'Pequeno', tipo: "Domestico", peso: 3, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
   ];
 
   try {
