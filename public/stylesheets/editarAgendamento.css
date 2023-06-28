@@ -33,6 +33,7 @@ body {
     z-index: -1;
   }
 
+
   .nav-container{
     display: flex;
     justify-content: space-between;
@@ -180,7 +181,7 @@ span{
     border-radius: 10px;
     border: #000000 solid 2px;
     margin: 0 auto;
-    margin-top: 8%;
+    margin-top: 5%;
   }
   
   

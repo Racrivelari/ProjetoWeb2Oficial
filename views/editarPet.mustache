@@ -31,10 +31,8 @@
   </header>
     
   <section class="container-formulario">
-    
+    <h2 id="formtitle">Editar pet</h2>
     <form action="/pets/editarPet" method="POST">
-      <h2 id="formtitle">Editar pet</h2>
-      <div style="margin-bottom: 10px;">
         {{#pet}}
         <label for="id">ID:</label>
         <input type="text" id="id" name="id" value="{{_id}}" readonly>
