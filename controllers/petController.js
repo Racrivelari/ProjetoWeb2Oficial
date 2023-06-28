@@ -1,28 +1,16 @@
-const Joi = require('joi');
 const DBConnection = require('../models/DAO');
 const PetModel = require('../models/petModel.js');
 
+const Validation = require('../middleware/validation');
+const validation = new Validation();
 class PetController {
   constructor() {
     this.connection = new DBConnection();
     this.model = null;
   }
 
-  validatePet(pet) {
-    const schema = Joi.object({
-      nome: Joi.string().required(),
-      idade: Joi.number().required(),
-      porte: Joi.string().valid('Pequeno', 'Medio', 'Grande'),
-      tipo: Joi.string().valid('Silvestre', 'Domestico'),
-      nomeCliente: Joi.string().required(),
-      peso: Joi.number().required(),
-      timestamp: Joi.date().timestamp() 
-    });
-    return schema.validate(pet);  
-  }
-  
   async createPet(pet) {
-    const { error } = this.validatePet(pet);
+    const { error } = validation.validatePet(pet);
     if (error) {
       throw new Error(error.details[0].message);
     }
@@ -46,7 +34,7 @@ class PetController {
   }
 
   async updatePet(idPet, petAtualizado) {
-    const { error } = this.validatePet(petAtualizado);
+    const { error } = validation.validatePet(petAtualizado);
     if (error) {
       throw new Error(error.details[0].message);
     }

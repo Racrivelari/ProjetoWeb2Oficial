@@ -1,9 +1,17 @@
 const express = require('express');
+const Validation = require('../middleware/validation');
+
+const validation = new Validation();
+
 const router = express.Router();
+
 const { ObjectId } = require('mongodb');
+
 const jwt = require('jsonwebtoken');
+
 const ColaboradorController = require('../controllers/colaboradorController');
 const colaboradorController = new ColaboradorController();
+
 const AgendamentoController = require('../controllers/agendamentoController');
 const agendamentoController = new AgendamentoController();
 
@@ -23,7 +31,7 @@ router.post('/novoColaborador', (req, res) => {
     timestamp: new Date().getTime(),
   };
 
-  const { error } = colaboradorController.validateColaborador(novoColaborador);
+  const { error } = validation.validateColaborador(novoColaborador);
   if (error) {
     return res.render('criarConta', { error: error.details[0].message });
   }
@@ -60,7 +68,7 @@ router.post('/editarConta', auth, async (req, res) => {
     timestamp: new Date().getTime(),
   };
 
-  const { error } = colaboradorController.validateColaborador(colabAtualizado);
+  const { error } = validation.validateColaborador(colabAtualizado);
 
   if (error) {
     return colaboradorController.findOne(new ObjectId(colaboradorId))

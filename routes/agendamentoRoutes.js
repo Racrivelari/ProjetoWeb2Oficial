@@ -1,4 +1,8 @@
 const express = require('express');
+const Validation = require('../middleware/validation');
+
+const validation = new Validation();
+
 const router = express.Router();
 
 const { ObjectId } = require('mongodb');
@@ -17,7 +21,7 @@ router.get('/criarAgendamento', async (req, res) => {
     .then((pets) => {
       res.render('criarAgendamento', { pets });
     }).catch((error) => {
-      res.status(500).json({ error: 'Ocorreu um erro ao buscar agendamento.' });
+      res.status(500).json({ error: 'Ocorreu um erro ao buscar agendamento.' + error});
     });
 
 });
@@ -77,7 +81,7 @@ router.post('/editarAgendamento', async (req, res) => {
     timestamp: new Date().getTime(), 
   };
 
-  const { error } = agendamentoController.validateAgendamento(novoAgendamento);
+  const { error } = validation.validateAgendamento(novoAgendamento);
 
    if (error) {
     return agendamentoController.findOne(new ObjectId(id))
@@ -111,7 +115,7 @@ router.post('/', async (req, res) => {
     timestamp: new Date().getTime(),
   };
 
-  const { error } = agendamentoController.validateAgendamento(novoAgendamento);
+  const { error } = validation.validateAgendamento(novoAgendamento);
   if (error) {
     try {
       const pets = await petController.readPets();

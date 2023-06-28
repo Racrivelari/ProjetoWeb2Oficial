@@ -1,6 +1,8 @@
-const Joi = require('joi');
 const DBConnection = require('../models/DAO');
 const AgendamentoModel = require('../models/agendamentoModel.js');
+
+const Validation = require('../middleware/validation');
+const validation = new Validation();
 
 class AgendamentoController {
     constructor() {
@@ -8,21 +10,9 @@ class AgendamentoController {
         this.model = null;
     }
 
-    validateAgendamento(agendamento) {
-        const schema = Joi.object({
-          pet: Joi.string().required(),
-          tipoAgendamento: Joi.string().valid('Consulta', 'Tosa', 'Banho'),
-          data: Joi.string().required(),
-          nomeColaborador: Joi.string().required(),
-          colaboradorId: Joi.string().required(),
-          timestamp: Joi.date().timestamp() 
-        });
-        return schema.validate(agendamento);  
-      }
-
     async createAgendamento(agendamento) {
 
-        const { error } = this.validateAgendamento(agendamento);
+        const { error } = validation.validateAgendamento(agendamento);
         if (error) {
             throw new Error(error.details[0].message);
         }
@@ -47,7 +37,7 @@ class AgendamentoController {
     }
 
     async updateAgendamento(agendamentoId, novoAgendamento) {
-        const { error } = this.validateAgendamento(novoAgendamento);
+        const { error } = validation.validateAgendamento(novoAgendamento);
         if (error) {
             throw new Error(error.details[0].message);
         }

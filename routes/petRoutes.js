@@ -1,4 +1,9 @@
 const express = require('express');
+
+const Validation = require('../middleware/validation');
+
+const validation = new Validation();
+
 const router = express.Router();
 
 const { ObjectId } = require('mongodb');
@@ -51,7 +56,7 @@ router.post('/editarPet',async (req, res) => {
     timestamp: new Date().getTime(), 
   };
 
-  const { error } = petController.validatePet(petAtualizado);
+  const { error } = validation.validatePet(petAtualizado);
 
    if (error) {
     return petController.findOne(new ObjectId(id))
@@ -103,7 +108,7 @@ router.post('/', async(req, res) => {
     timestamp: new Date().getTime(), 
   };
 
-  const { error } = petController.validatePet(novoPet);
+  const { error } = validation.validatePet(novoPet);
   if (error) {
     return res.render('criarPet', { error: error.details[0].message });
   }
