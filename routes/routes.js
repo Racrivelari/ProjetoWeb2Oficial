@@ -41,8 +41,7 @@ router.post('/email', auth, async(req, res) => {
         res.status(500).send('Erro ao enviar o e-mail.');
       } else {
         console.log('E-mail enviado: ' + info.response);
-        res.send('E-mail enviado com sucesso!');
-        res.render('contato')
+        res.redirect('/agendamentos/agendamentos')
       }
     });
 });

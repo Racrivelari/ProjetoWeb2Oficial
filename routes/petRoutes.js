@@ -123,15 +123,12 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/carregarPets', async function (req, res) {
-  const colaboradorId = req.user.colaboradorId;
-  const nomeColaborador = req.user.nome;
-
   const pets = [
-    { colaboradorId: colaboradorId, nome: 'Mel', idade: 1, porte: 'Pequeno', tipo: "Silvestre", peso: 2, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
-    { colaboradorId: colaboradorId, nome: 'Coelho', idade: 2, porte: 'Médio', tipo: "Domestico", peso: 4, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
-    { colaboradorId: colaboradorId, nome: 'Tutu', idade: 3, porte: 'Grande', tipo: "Silvestre", peso: 1, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
-    { colaboradorId: colaboradorId, nome: 'Flop', idade: 4, porte: 'Grande', tipo: "Domestico", peso: 2, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
-    { colaboradorId: colaboradorId, nome: 'Meow', idade: 5, porte: 'Pequeno', tipo: "Domestico", peso: 3, nomeCliente: nomeColaborador, timestamp: new Date().getTime() },
+    {  nome: 'Banana', idade: 1, porte: 'Pequeno', tipo: "Silvestre", peso: 2, nomeCliente: "Augusto", timestamp: new Date().getTime() },
+    {  nome: 'Coelho', idade: 2, porte: 'Medio', tipo: "Domestico", peso: 4, nomeCliente: "Lilian", timestamp: new Date().getTime() },
+    {  nome: 'Tutu', idade: 3, porte: 'Grande', tipo: "Silvestre", peso: 1, nomeCliente: "Laura", timestamp: new Date().getTime() },
+    {  nome: 'Gogo', idade: 4, porte: 'Grande', tipo: "Domestico", peso: 2, nomeCliente: "Marcos", timestamp: new Date().getTime() },
+    { nome: 'Foguete', idade: 5, porte: 'Pequeno', tipo: "Domestico", peso: 3, nomeCliente: "Melissa", timestamp: new Date().getTime() },
   ];
 
   try {

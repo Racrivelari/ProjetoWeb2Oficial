@@ -82,12 +82,15 @@ router.post('/editarConta', auth, async (req, res) => {
 
   try {
     await colaboradorController.updateColaborador(colaboradorId, colabAtualizado);
-    await agendamentoController.updateAgendamentoColaborador(nomeColab, nome);
+    const token = jwt.sign({ colaboradorId, nome: colabAtualizado.nome }, process.env.JWT_PASSWORD, { expiresIn: '30min' });
+    res.cookie('token', token, { httpOnly: true });
+    await agendamentoController.updateAgendamentoColaborador(nomeColab, colabAtualizado.nome);
     res.redirect('/agendamentos/agendamentos');
   } catch (error) {
     res.status(500).json({ error: 'Ocorreu um erro ao atualizar o colab.' });
   }
 });
+
 
 router.delete('/', auth, async (req, res) => {
   const colaboradorId = req.user.colaboradorId;
