@@ -45,7 +45,7 @@
 
   <section id="lista-agendamentos" class="container">
     <h2 class="txt-tbl">Agendamentos</h2>
-    <table class="table" id="myTable">
+    <table class="table table-sm" id="myTable">
       <thead class="thead-dark">
         <tr>
           <th scope="col" style="width: 7%;">ID</th>
@@ -73,16 +73,17 @@
         {{/agendamentos}}
       </tbody>
     </table>
-    <div class="d-flex justify-content-center">
-      <button style="background-color: #212529;border-color: #32383e;" class="btn btn-primary mr-2"
-        onclick="exportToPdf()">Extrair PDF</button>
-      <form action="/agendamentos/criarAgendamento" method="GET">
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
-      </form>
-    </div>
+   
   </section>
 
-
+  <div class="d-flex justify-content-center">
+    <button style="background-color: #212529;border-color: #32383e;" class="btn btn-primary mr-2"
+      onclick="exportToPdf()">Extrair PDF</button>
+    <form action="/agendamentos/criarAgendamento" method="GET">
+      <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+  </div>
+  
   <footer>
     <div id="div-footer">
       <a class="texto-end1-page" href="https://www.linkedin.com/in/ramon-crivelari-batista-b73392234/" target="_blank"
@@ -103,7 +104,7 @@
   <script>
     $(document).ready(function () {
       $('#myTable').DataTable({
-        "lengthMenu": [5, 10, 25, 50],
+        "lengthMenu": [3, 6, 10, 30],
         "language": {
           "lengthMenu": "Exibição_MENU_",
           "zeroRecords": "Nenhum registro encontrado",
